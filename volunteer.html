@@ -9,6 +9,175 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .progress-widget {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .progress-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+
+        .progress-bar-container {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            height: 12px;
+            overflow: hidden;
+            margin-bottom: 10px;
+        }
+
+        .progress-bar-fill {
+            background: white;
+            height: 100%;
+            border-radius: 20px;
+            transition: width 0.3s ease;
+        }
+
+        .quick-actions {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .quick-action-btn {
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            padding: 15px 10px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .quick-action-btn:hover {
+            border-color: #3498db;
+            background: #f0f9ff;
+            transform: translateY(-2px);
+        }
+
+        .quick-action-btn i {
+            font-size: 1.5rem;
+            color: #3498db;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .quick-action-btn span {
+            font-size: 0.85rem;
+            color: #2c3e50;
+            font-weight: 500;
+        }
+
+        .task-card {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 15px;
+            border-left: 4px solid #3498db;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .task-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 15px;
+        }
+
+        .task-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+
+        .task-meta {
+            color: #7f8c8d;
+            font-size: 0.85rem;
+        }
+
+        .task-details {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .task-detail-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+            color: #555;
+        }
+
+        .task-detail-item i {
+            color: #3498db;
+        }
+
+        .urgency-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .urgency-high {
+            background: #fee2e2;
+            color: #dc2626;
+        }
+
+        .urgency-medium {
+            background: #fef3c7;
+            color: #d97706;
+        }
+
+        .leaderboard-widget {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            border-radius: 12px;
+            padding: 20px;
+        }
+
+        .leaderboard-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .leaderboard-rank {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            padding: 12px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .rank-number {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        @media (max-width: 768px) {
+            .quick-actions {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .task-details {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -19,13 +188,13 @@
                 <i class="fas fa-bicycle"></i> Volunteer
             </div>
             <ul class="sidebar-menu">
-                <li><a href="volunteer-pickups.html"><i class="fas fa-tasks"></i> Pickup Requests</a></li>
                 <li><a href="volunteer.html" class="active"><i class="fas fa-truck"></i> Active Delivery</a></li>
+                <li><a href="volunteer-pickups.html"><i class="fas fa-tasks"></i> Pickup Requests</a></li>
                 <li><a href="volunteer-history.html"><i class="fas fa-history"></i> Completed Tasks</a></li>
                 <li><a href="volunteer-profile.html"><i class="fas fa-user"></i> Profile</a></li>
             </ul>
             <div class="sidebar-footer">
-                <p>&copy; 2024 From Surplus to Smiles.</p>
+                <p>&copy; 2026 From Surplus to Smiles.</p>
                 <div style="margin-top: 10px;">
                     <button class="btn-secondary-outline" onclick="Auth.logout()"
                         style="width: 100%; justify-content: center; border: 1px solid rgba(255,255,255,0.2); color: #ecf0f1;">Logout</button>
@@ -71,34 +240,201 @@
             </header>
 
             <div class="content-area">
-                <h1 class="welcome-text">Hello, Volunteer!</h1>
+                <h1 class="welcome-text">Hello, Arjun! 👋</h1>
+
+                <!-- Progress Widget -->
+                <div class="progress-widget">
+                    <div class="progress-header">
+                        <div>
+                            <h3 style="margin: 0 0 5px 0; font-size: 1.2rem;">Weekly Goal Progress</h3>
+                            <p style="margin: 0; opacity: 0.9; font-size: 0.9rem;">8 out of 10 deliveries completed</p>
+                        </div>
+                        <div style="text-align: right;">
+                            <div style="font-size: 2rem; font-weight: 700;">80%</div>
+                        </div>
+                    </div>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar-fill" style="width: 80%;"></div>
+                    </div>
+                    <p style="margin: 5px 0 0 0; opacity: 0.9; font-size: 0.85rem;">
+                        <i class="fas fa-fire"></i> 2 more deliveries to unlock "Weekly Hero" badge!
+                    </p>
+                </div>
 
                 <!-- Stats Section -->
                 <div class="stats-row">
                     <div class="stat-card">
                         <h3>Deliveries Completed</h3>
-                        <div class="stat-value">42</div>
-                        <p class="stat-desc">all time</p>
+                        <div class="stat-value">58</div>
+                        <p class="stat-label">all time</p>
                     </div>
                     <div class="stat-card">
                         <h3>Hours Contributed</h3>
-                        <div class="stat-value">12.5</div>
-                        <p class="stat-desc">this month</p>
+                        <div class="stat-value">92.5</div>
+                        <p class="stat-label">this month</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Your Rating</h3>
+                        <div class="stat-value">⭐ 4.8</div>
+                        <p class="stat-label">from NGOs</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Meals Delivered</h3>
+                        <div class="stat-value">2,340</div>
+                        <p class="stat-label">total impact</p>
                     </div>
                 </div>
 
-                <!-- Tasks List -->
-                <div class="dashboard-card">
-                    <h2>Delivery Tasks</h2>
-                    <div class="donations-list">
-                        <div class="donation-item">
-                            <div class="donation-info">
-                                <h3>Pickup from: Bakery A -> Deliver to: Shelter B</h3>
-                                <p>Distance: 3.2km | Time: Today 4:00 PM</p>
-                                <span class="status-badge scheduled">Urgent</span>
+                <!-- Quick Actions -->
+                <h2 style="margin: 30px 0 15px 0;">Quick Actions</h2>
+                <div class="quick-actions">
+                    <div class="quick-action-btn" onclick="window.location.href='volunteer-pickups.html'">
+                        <i class="fas fa-search"></i>
+                        <span>Browse Tasks</span>
+                    </div>
+                    <div class="quick-action-btn">
+                        <i class="fas fa-map-marked-alt"></i>
+                        <span>View Map</span>
+                    </div>
+                    <div class="quick-action-btn" onclick="window.location.href='volunteer-history.html'">
+                        <i class="fas fa-history"></i>
+                        <span>My History</span>
+                    </div>
+                    <div class="quick-action-btn" onclick="window.location.href='volunteer-profile.html'">
+                        <i class="fas fa-cog"></i>
+                        <span>Settings</span>
+                    </div>
+                </div>
+
+                <!-- Two Column Layout -->
+                <div class="dashboard-split-layout">
+                    <!-- Left: Active Delivery Tasks -->
+                    <div class="col-main">
+                        <h2 style="margin-bottom: 15px;">Active Delivery Tasks</h2>
+
+                        <div class="task-card">
+                            <div class="task-header">
+                                <div>
+                                    <div class="task-title">Fresh Vegetables & Fruits</div>
+                                    <div class="task-meta">Pickup from Green Farm Market</div>
+                                </div>
+                                <span class="urgency-badge urgency-high">Urgent</span>
                             </div>
-                            <button class="btn-primary"
-                                style="width: auto; padding: 5px 15px; font-size: 0.85rem;">Accept Task</button>
+                            <div class="task-details">
+                                <div class="task-detail-item">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <span>Green Farm, Countryside</span>
+                                </div>
+                                <div class="task-detail-item">
+                                    <i class="fas fa-hand-holding-heart"></i>
+                                    <span>Annapurna Foundation</span>
+                                </div>
+                                <div class="task-detail-item">
+                                    <i class="fas fa-clock"></i>
+                                    <span>Today, 4:00 PM</span>
+                                </div>
+                                <div class="task-detail-item">
+                                    <i class="fas fa-route"></i>
+                                    <span>3.2 km distance</span>
+                                </div>
+                            </div>
+                            <button class="btn-primary" style="width: 100%;">
+                                <i class="fas fa-check-circle"></i> Mark as Completed
+                            </button>
+                        </div>
+
+                        <div class="task-card" style="border-left-color: #f39c12;">
+                            <div class="task-header">
+                                <div>
+                                    <div class="task-title">Baked Goods & Bread</div>
+                                    <div class="task-meta">Pickup from Daily Bakery</div>
+                                </div>
+                                <span class="urgency-badge urgency-medium">Medium</span>
+                            </div>
+                            <div class="task-details">
+                                <div class="task-detail-item">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <span>Daily Bakery, Downtown</span>
+                                </div>
+                                <div class="task-detail-item">
+                                    <i class="fas fa-hand-holding-heart"></i>
+                                    <span>Hope Haven Charity</span>
+                                </div>
+                                <div class="task-detail-item">
+                                    <i class="fas fa-clock"></i>
+                                    <span>Today, 7:00 PM</span>
+                                </div>
+                                <div class="task-detail-item">
+                                    <i class="fas fa-route"></i>
+                                    <span>1.8 km distance</span>
+                                </div>
+                            </div>
+                            <button class="btn-secondary" style="width: 100%;">
+                                <i class="fas fa-directions"></i> Get Directions
+                            </button>
+                        </div>
+
+                        <button class="btn-secondary-outline" style="width: 100%; margin-top: 15px;"
+                            onclick="window.location.href='volunteer-pickups.html'">
+                            <i class="fas fa-plus-circle"></i> Browse More Tasks
+                        </button>
+                    </div>
+
+                    <!-- Right: Sidebar Info -->
+                    <div class="col-sidebar">
+                        <!-- Leaderboard Widget -->
+                        <div class="leaderboard-widget">
+                            <div class="leaderboard-title">
+                                <i class="fas fa-trophy"></i> Your Rank This Month
+                            </div>
+                            <div class="leaderboard-rank">
+                                <div class="rank-number">#12</div>
+                                <div style="flex: 1;">
+                                    <div style="font-weight: 600;">Top 5% Volunteers</div>
+                                    <div style="opacity: 0.9; font-size: 0.85rem;">Keep it up!</div>
+                                </div>
+                            </div>
+                            <button class="btn-secondary-outline"
+                                style="width: 100%; background: rgba(255,255,255,0.2); border-color: white; color: white;"
+                                onclick="window.location.href='volunteer-history.html'">
+                                View Leaderboard
+                            </button>
+                        </div>
+
+                        <!-- Tips Card -->
+                        <div class="dashboard-card" style="margin-top: 15px;">
+                            <h3><i class="fas fa-lightbulb"></i> Volunteer Tips</h3>
+                            <div class="reminder-item">
+                                <strong>Peak Hours:</strong>
+                                Most pickups are available between 3-7 PM.
+                            </div>
+                            <div class="reminder-item">
+                                <strong>Communication:</strong>
+                                Always confirm pickup details with donors before starting.
+                            </div>
+                            <div class="reminder-item">
+                                <strong>Safety First:</strong>
+                                Check food quality and packaging before delivery.
+                            </div>
+                        </div>
+
+                        <!-- Achievements Preview -->
+                        <div class="dashboard-card" style="margin-top: 15px;">
+                            <h3><i class="fas fa-award"></i> Recent Achievements</h3>
+                            <div style="display: flex; gap: 10px; flex-wrap: wrap; margin-top: 10px;">
+                                <div style="text-align: center; flex: 1; min-width: 60px;">
+                                    <div style="font-size: 2rem;">🏆</div>
+                                    <div style="font-size: 0.75rem; color: #7f8c8d;">First Mile</div>
+                                </div>
+                                <div style="text-align: center; flex: 1; min-width: 60px;">
+                                    <div style="font-size: 2rem;">⭐</div>
+                                    <div style="font-size: 0.75rem; color: #7f8c8d;">Top Rated</div>
+                                </div>
+                                <div style="text-align: center; flex: 1; min-width: 60px;">
+                                    <div style="font-size: 2rem;">🌿</div>
+                                    <div style="font-size: 0.75rem; color: #7f8c8d;">Eco Warrior</div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -106,7 +442,6 @@
         </main>
     </div>
 
-    <script src="js/auth.js"></script>
     <script>
         // Auth.requireAuth();
 

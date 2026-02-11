@@ -60,6 +60,8 @@
         </div>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/database.js"></script>
     <script src="js/main.js"></script>
     <script src="js/auth.js"></script>
     <script>
@@ -68,11 +70,29 @@
             const email = e.target.querySelector('input[type="email"]').value;
             const password = e.target.querySelector('input[type="password"]').value;
 
+            // Show loading state
+            const submitBtn = e.target.querySelector('button[type="submit"]');
+            const originalText = submitBtn.textContent;
+            submitBtn.textContent = 'Logging in...';
+            submitBtn.disabled = true;
+
             try {
-                const user = await Auth.login(email, password);
-                Auth.redirectUser(user.role);
+                const result = await Auth.login(email, password);
+
+                if (result.success) {
+                    console.log('✅ Login successful! Role:', result.role);
+                    // Redirect based on role
+                    Auth.redirectUser(result.role);
+                } else {
+                    alert('❌ ' + result.error);
+                    submitBtn.textContent = originalText;
+                    submitBtn.disabled = false;
+                }
             } catch (error) {
-                alert('Login failed. Please try again.');
+                console.error('Login error:', error);
+                alert('❌ Login failed: ' + error.message);
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
             }
         });
     </script>
