@@ -1,1 +1,1 @@
-console.log('Admin Dashboard loaded');
+// Admin Dashboard - OPTIMIZED

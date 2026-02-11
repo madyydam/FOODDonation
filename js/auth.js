@@ -1,4 +1,4 @@
-// Supabase Authentication Helper
+// Supabase Authentication Helper - OPTIMIZED
 // Make sure to include Supabase JS library and database.js before this file
 
 const Auth = {
@@ -22,8 +22,6 @@ const Auth = {
                 throw authError;
             }
 
-            console.log('✅ Auth user created:', authData.user);
-
             // 2. Create user profile in users table
             if (authData.user) {
                 const { data: userData, error: userError } = await Database.users.create({
@@ -38,22 +36,25 @@ const Auth = {
                     // Don't throw error here, auth user is already created
                 }
 
-                console.log('✅ User profile created:', userData);
-
                 // 3. Create role-specific table entry
-                if (role === 'donor') {
-                    await supabaseClient.from('donors').insert([{
-                        user_id: authData.user.id
-                    }]);
-                } else if (role === 'ngo') {
-                    await supabaseClient.from('ngos').insert([{
-                        user_id: authData.user.id,
-                        organization_name: fullName // Can be updated later
-                    }]);
-                } else if (role === 'volunteer') {
-                    await supabaseClient.from('volunteers').insert([{
-                        user_id: authData.user.id
-                    }]);
+                try {
+                    if (role === 'donor') {
+                        await supabaseClient.from('donors').insert([{
+                            user_id: authData.user.id
+                        }]);
+                    } else if (role === 'ngo') {
+                        await supabaseClient.from('ngos').insert([{
+                            user_id: authData.user.id,
+                            organization_name: fullName // Can be updated later
+                        }]);
+                    } else if (role === 'volunteer') {
+                        await supabaseClient.from('volunteers').insert([{
+                            user_id: authData.user.id
+                        }]);
+                    }
+                } catch (roleError) {
+                    console.error('Role-specific table creation error:', roleError);
+                    // Continue even if role table insert fails
                 }
             }
 
@@ -83,8 +84,6 @@ const Auth = {
                 console.error('Login error:', error);
                 throw error;
             }
-
-            console.log('✅ User logged in:', data.user);
 
             // Get user profile to find role
             const { data: userData, error: userError } = await Database.users.getById(data.user.id);
@@ -133,6 +132,7 @@ const Auth = {
     async isAuthenticated() {
         try {
             const { data: { session }, error } = await supabaseClient.auth.getSession();
+            if (error) throw error;
             return session !== null;
         } catch (error) {
             console.error('Auth check error:', error);
@@ -164,17 +164,13 @@ const Auth = {
 
     // Redirect user based on role
     redirectUser(role) {
-        if (role === 'donor') {
-            window.location.href = 'donor.html';
-        } else if (role === 'ngo') {
-            window.location.href = 'ngo.html';
-        } else if (role === 'volunteer') {
-            window.location.href = 'volunteer.html';
-        } else if (role === 'admin') {
-            window.location.href = 'admin.html';
-        } else {
-            window.location.href = 'donor.html'; // Default
-        }
+        const routes = {
+            'donor': 'donor.html',
+            'ngo': 'ngo.html',
+            'volunteer': 'volunteer.html',
+            'admin': 'admin.html'
+        };
+        window.location.href = routes[role] || 'donor.html';
     },
 
     // Reset password

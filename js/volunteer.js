@@ -1,1 +1,1 @@
-console.log('Volunteer Dashboard loaded');
+// Volunteer Dashboard - OPTIMIZED

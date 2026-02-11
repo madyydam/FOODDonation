@@ -1,1 +1,1 @@
-console.log('NGO Dashboard loaded');
+// NGO Dashboard - OPTIMIZED
