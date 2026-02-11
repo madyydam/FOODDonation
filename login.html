@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Food Donation Platform</title>
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Using FontAwesome for icons (CDN) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="auth-container">
+        <!-- Left Side: Image -->
+        <div class="auth-image-side">
+            <div>
+                <h1>Turn Surplus Food into Smiles</h1>
+            </div>
+        </div>
+
+        <!-- Right Side: Form -->
+        <div class="auth-form-side">
+            <div class="auth-box">
+                <h2>Welcome Back</h2>
+                <p class="auth-subtext">Feeding communities starts here</p>
+
+                <form id="loginForm">
+                    <div class="input-group">
+                        <i class="fas fa-leaf input-icon"></i>
+                        <input type="email" placeholder="Email Address" required>
+                    </div>
+
+                    <div class="input-group">
+                        <i class="fas fa-utensils input-icon"></i>
+                        <input type="password" placeholder="Password" required>
+                    </div>
+
+                    <a href="#" class="forgot-password">Forgot Password?</a>
+
+                    <!-- Role selection for demo (hidden in real app or handled differently) -->
+                    <div class="input-group">
+                        <label
+                            style="display:block; text-align:left; margin-bottom:5px; font-size:0.9rem; color:#7f8c8d;">Select
+                            Role (Demo):</label>
+                        <select id="roleSelect"
+                            style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 8px;">
+                            <option value="donor">Donor</option>
+                            <option value="ngo">NGO</option>
+                            <option value="volunteer">Volunteer</option>
+                            <option value="admin">Admin</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="btn-primary">Login</button>
+
+                </form>
+
+                <div class="auth-footer-links">
+                    <span>Don't have an account? <a href="signup.html">Sign Up</a></span>
+                </div>
+
+                <div class="auth-stats">
+                    <span>About</span>
+                    <span>How It Works</span>
+                    <span>Contact</span>
+                </div>
+                <div class="auth-stats" style="margin-top: 1rem;">
+                    <span>10,000+ Meals Saved</span>
+                    <span>200+ NGOs Connected</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script src="js/auth.js"></script>
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const role = document.getElementById('roleSelect').value;
+            // Simulate redirect based on role
+            if (role === 'donor') window.location.href = 'donor.html';
+            else if (role === 'ngo') window.location.href = 'ngo.html';
+            else if (role === 'volunteer') window.location.href = 'volunteer.html';
+            else if (role === 'admin') window.location.href = 'admin.html';
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - Food Donation Platform</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="auth-container">
+        <!-- Left Side: Image -->
+        <div class="auth-image-side">
+            <div>
+                <h1>Join the Movement to End Hunger</h1>
+            </div>
+        </div>
+
+        <!-- Right Side: Form -->
+        <div class="auth-form-side">
+            <div class="auth-box">
+                <h2>Create Account</h2>
+                <p class="auth-subtext">Be a part of the change</p>
+
+                <form id="signupForm">
+                    <div class="input-group">
+                        <i class="fas fa-user input-icon"></i>
+                        <input type="text" placeholder="Full Name" required>
+                    </div>
+
+                    <div class="input-group">
+                        <i class="fas fa-leaf input-icon"></i>
+                        <input type="email" placeholder="Email Address" required>
+                    </div>
+
+                    <div class="input-group">
+                        <i class="fas fa-utensils input-icon"></i>
+                        <input type="password" placeholder="Password" required>
+                    </div>
+
+                    <div class="input-group">
+                        <i class="fas fa-users input-icon"></i>
+                        <select id="roleSelect"
+                            style="width: 100%; padding: 12px 15px 12px 40px; border: 1px solid #ddd; border-radius: 8px; outline: none;">
+                            <option value="" disabled selected>Select Role</option>
+                            <option value="donor">Donor</option>
+                            <option value="ngo">NGO</option>
+                            <option value="volunteer">Volunteer</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="btn-primary">Sign Up</button>
+
+                </form>
+
+                <div class="auth-footer-links">
+                    <span>Already have an account? <a href="login.html">Login</a></span>
+                </div>
+
+                <div class="auth-stats">
+                    <span>About</span>
+                    <span>How It Works</span>
+                    <span>Contact</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script src="js/auth.js"></script>
+    <script>
+        document.getElementById('signupForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const role = document.getElementById('roleSelect').value;
+            if (!role) {
+                alert('Please select a role');
+                return;
+            }
+            // Simulate redirect based on role
+            if (role === 'donor') window.location.href = 'donor.html';
+            else if (role === 'ngo') window.location.href = 'ngo.html';
+            else if (role === 'volunteer') window.location.href = 'volunteer.html';
+        });
+    </script>
+</body>
+
+</html>
