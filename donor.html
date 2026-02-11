@@ -4,11 +4,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Donor Dashboard - Feed More Waste Less</title>
+    <title>Donor Dashboard - From Surplus to Smiles</title>
     <link rel="stylesheet" href="css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Inline overrides for specific page adjustments if needed */
+        .sidebar {
+            width: 260px;
+        }
+    </style>
 </head>
 
 <body>
@@ -16,14 +22,17 @@
         <!-- Sidebar -->
         <aside class="sidebar">
             <div class="sidebar-header">
-                <i class="fas fa-boxes"></i> Donor Dashboard
+                <i class="fas fa-th-large"></i> Donor Dashboard
             </div>
             <ul class="sidebar-menu">
                 <li><a href="#" class="active"><i class="fas fa-utensils"></i> Active Donations</a></li>
-                <!-- Future links could go here -->
+                <!-- Placeholder links -->
+                <li><a href="#"><i class="fas fa-history"></i> Donation History</a></li>
+                <li><a href="#"><i class="fas fa-cog"></i> Settings</a></li>
             </ul>
             <div class="sidebar-footer">
-                <p>&copy; 2024 From Surplus to Smiles. All rights reserved.</p>
+                <p>&copy; 2026 From Surplus to Smiles.</p>
+                <p style="font-size: 0.7rem; color: #95a5a6;">All rights reserved.</p>
             </div>
         </aside>
 
@@ -31,115 +40,189 @@
         <main class="main-content">
             <header class="dashboard-header">
                 <div class="brand">
-                    <i class="fas fa-leaf"></i> From Surplus to Smiles
+                    <i class="fas fa-box-open" style="color: #2ecc71;"></i> <span
+                        style="color: #2ecc71; font-weight: 600; margin-left: 5px;">From Surplus to Smiles</span>
                 </div>
                 <div class="user-profile">
-                    <i class="far fa-bell notification-icon"></i>
+                    <div style="position: relative; margin-right: 15px; cursor: pointer;">
+                        <i class="far fa-bell" style="font-size: 1.2rem; color: #555;"></i>
+                        <span
+                            style="position: absolute; top: -5px; right: -2px; background: #e74c3c; width: 8px; height: 8px; border-radius: 50%;"></span>
+                    </div>
                     <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80"
-                        alt="User" class="user-avatar">
+                        alt="User" class="user-avatar" style="border: 2px solid #2ecc71;">
                 </div>
             </header>
 
             <div class="content-area">
-                <h1 class="welcome-text">Welcome, Donor!</h1>
+                <h1 style="font-size: 1.8rem; color: #2c3e50; margin-bottom: 20px;">Active Donations</h1>
 
-                <!-- Stats Section -->
-                <div class="stats-row">
-                    <div class="stat-card">
-                        <h3>Meals Saved</h3>
-                        <div class="stat-value">1,245</div>
-                        <p class="stat-desc">from surplus food this month</p>
+                <div class="dashboard-split-layout">
+                    <!-- Left Column: Active Contributions -->
+                    <div class="col-main">
+                        <div class="dashboard-card">
+                            <h2>My Active Contributions</h2>
+
+                            <!-- Item 1 -->
+                            <div class="donation-item">
+                                <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80"
+                                    alt="Bread">
+                                <div class="donation-info">
+                                    <h3>Fresh Baked Bread</h3>
+                                    <p><i class="far fa-clock"></i> Today, 2:00 PM - 3:00 PM</p>
+                                    <div>
+                                        <span class="status-badge assigned">Volunteer Assigned</span>
+                                    </div>
+                                </div>
+                                <div class="donation-actions">
+                                    <!-- Verified Donor badge logic could go here -->
+                                    <span
+                                        style="font-size: 0.7rem; color: #2ecc71; text-align: right; margin-bottom: 5px;"><i
+                                            class="fas fa-check-circle"></i> Verified Donor</span>
+                                </div>
+                            </div>
+                            <div style="display: flex; gap: 10px; margin-bottom: 20px; padding-left: 15px;">
+                                <button class="btn-secondary-outline"
+                                    style="width: auto; padding: 6px 15px; border: 1px solid #ddd; color: #555;">Edit
+                                    Pickup Info</button>
+                                <button class="btn-secondary-outline"
+                                    style="width: auto; padding: 6px 15px; background: #e74c3c; color: white; border: none;">Cancel
+                                    Donation</button>
+                            </div>
+
+                            <!-- Item 2 -->
+                            <div class="donation-item">
+                                <img src="https://images.unsplash.com/photo-1566385101042-1a0aa0c1268c?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80"
+                                    alt="Vegetables">
+                                <div class="donation-info">
+                                    <h3>Mixed Vegetables Basket</h3>
+                                    <p><i class="far fa-clock"></i> Tomorrow, 9:00 AM - 10:30 AM</p>
+                                    <div>
+                                        <span class="status-badge pending">Pending</span>
+                                    </div>
+                                </div>
+                                <div class="donation-actions">
+                                    <span
+                                        style="font-size: 0.7rem; color: #2ecc71; text-align: right; margin-bottom: 5px;"><i
+                                            class="fas fa-check-circle"></i> Verified Donor</span>
+                                </div>
+                            </div>
+                            <div style="display: flex; gap: 10px; margin-bottom: 20px; padding-left: 15px;">
+                                <button class="btn-secondary-outline"
+                                    style="width: auto; padding: 6px 15px; border: 1px solid #ddd; color: #555;">Edit
+                                    Pickup Info</button>
+                                <button class="btn-secondary-outline"
+                                    style="width: auto; padding: 6px 15px; background: #e74c3c; color: white; border: none;">Cancel
+                                    Donation</button>
+                            </div>
+
+                            <!-- Item 3 -->
+                            <div class="donation-item">
+                                <img src="https://images.unsplash.com/photo-1610832958506-aa56368176cf?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80"
+                                    alt="Fruits">
+                                <div class="donation-info">
+                                    <h3>Organic Fruit Selection</h3>
+                                    <p><i class="far fa-clock"></i> Yesterday, 1:00 PM - 2:00 PM</p>
+                                    <div>
+                                        <span class="status-badge picked-up">Picked Up</span>
+                                    </div>
+                                </div>
+                                <div class="donation-actions">
+                                    <span
+                                        style="font-size: 0.7rem; color: #2ecc71; text-align: right; margin-bottom: 5px;"><i
+                                            class="fas fa-check-circle"></i> Verified Donor</span>
+                                </div>
+                            </div>
+                            <div style="display: flex; gap: 10px; margin-bottom: 20px; padding-left: 15px;">
+                                <button class="btn-secondary-outline"
+                                    style="width: auto; padding: 6px 15px; border: 1px solid #ddd; color: #555;">Edit
+                                    Pickup Info</button>
+                                <button class="btn-secondary-outline"
+                                    style="width: auto; padding: 6px 15px; background: #e74c3c; color: white; border: none;">Cancel
+                                    Donation</button>
+                            </div>
+
+                            <!-- Item 4 -->
+                            <div class="donation-item">
+                                <img src="https://images.unsplash.com/photo-1628088062854-d1870b4553da?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80"
+                                    alt="Dairy">
+                                <div class="donation-info">
+                                    <h3>Fresh Dairy Products</h3>
+                                    <p><i class="far fa-clock"></i> 2 days ago, 11:00 AM - 12:00 PM</p>
+                                    <div>
+                                        <span class="status-badge delivered">Delivered</span>
+                                    </div>
+                                </div>
+                                <div class="donation-actions">
+                                    <span
+                                        style="font-size: 0.7rem; color: #2ecc71; text-align: right; margin-bottom: 5px;"><i
+                                            class="fas fa-check-circle"></i> Verified Donor</span>
+                                </div>
+                            </div>
+                            <div style="display: flex; gap: 10px; margin-bottom: 20px; padding-left: 15px;">
+                                <button class="btn-secondary-outline"
+                                    style="width: auto; padding: 6px 15px; border: 1px solid #ddd; color: #555;">Edit
+                                    Pickup Info</button>
+                            </div>
+
+                        </div>
                     </div>
-                    <div class="stat-card">
-                        <h3>CO<sub>2</sub> Reduced</h3>
-                        <div class="stat-value">750kg</div>
-                        <p class="stat-desc">by preventing food waste this month</p>
+
+                    <!-- Right Column: Stats & Reminders -->
+                    <div class="col-sidebar">
+                        <div class="dashboard-card" style="padding: 15px;">
+                            <h3>Your Impact Summary</h3>
+                            <div class="impact-grid">
+                                <div class="impact-card">
+                                    <i class="fas fa-utensils impact-green"></i>
+                                    <span class="count impact-green">247</span>
+                                    <span class="label">Meals Saved</span>
+                                </div>
+                                <div class="impact-card">
+                                    <i class="fas fa-leaf impact-orange"></i>
+                                    <span class="count impact-orange">120 kg</span>
+                                    <span class="label">CO<sub>2</sub> Reduced</span>
+                                </div>
+                                <div class="impact-card">
+                                    <i class="far fa-heart impact-blue"></i>
+                                    <span class="count impact-blue">18</span>
+                                    <span class="label">Donations Made</span>
+                                </div>
+                                <div class="impact-card">
+                                    <i class="fas fa-hand-holding-heart impact-green"></i>
+                                    <span class="count impact-green">7</span>
+                                    <span class="label">NGOs Supported</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="dashboard-card">
+                            <h3>Key Reminders</h3>
+                            <div class="reminder-item">
+                                <strong>Pickup Confirmation:</strong>
+                                Ensure you confirm pickup details within 24 hours of a volunteer being assigned.
+                            </div>
+                            <div class="reminder-item">
+                                <strong>Review Donation Status:</strong>
+                                Keep an eye on your donation statuses to track their journey to NGOs.
+                            </div>
+                            <div class="reminder-item">
+                                <strong>Feedback Appreciated:</strong>
+                                After delivery, consider leaving feedback for volunteers and NGOs to improve our
+                                service.
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <!-- New Donation Form -->
-                <div class="dashboard-card">
-                    <h2>Make a New Food Donation</h2>
-                    <form id="donationForm">
-                        <div class="form-row">
-                            <div class="form-group half">
-                                <label for="foodType">Food Type</label>
-                                <select id="foodType" required>
-                                    <option value="" disabled selected>Select food type</option>
-                                    <option value="cooked">Cooked Meals</option>
-                                    <option value="raw">Raw Ingredients</option>
-                                    <option value="packaged">Packaged Food</option>
-                                </select>
-                            </div>
-                            <div class="form-group half">
-                                <label for="quantity">Quantity (kg)</label>
-                                <input type="number" id="quantity" placeholder="e.g., 5" required>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="address">Pickup Address</label>
-                            <input type="text" id="address" placeholder="Street, City, Postcode" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="pickupTime">Preferred Pickup Time</label>
-                            <input type="datetime-local" id="pickupTime" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="notes">Additional Notes</label>
-                            <textarea id="notes" placeholder="Any specific instructions or allergies?"></textarea>
-                        </div>
-                        <button type="submit" class="btn-primary" style="width: auto; padding: 10px 30px;">Donate
-                            Now</button>
-                    </form>
-                </div>
-
-                <!-- Active Donations List -->
-                <div class="dashboard-card">
-                    <h2>Your Active Donations</h2>
-                    <div class="donations-list">
-                        <!-- Items will be populated by JS or static for now -->
-                        <div class="donation-item">
-                            <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80"
-                                alt="Food">
-                            <div class="donation-info">
-                                <h3>Fresh Produce - 10 kg</h3>
-                                <p>Pickup: Today 3:00 PM | For: Community Kitchen</p>
-                                <span class="status-badge pending">Pending Pickup</span>
-                            </div>
-                            <button class="btn-secondary-outline">View Details <i
-                                    class="fas fa-arrow-right"></i></button>
-                        </div>
-
-                        <div class="donation-item">
-                            <img src="https://images.unsplash.com/photo-1577308856961-8e9ec50d0c6b?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80"
-                                alt="Food">
-                            <div class="donation-info">
-                                <h3>Baked Goods - 5 kg</h3>
-                                <p>Pickup: Yesterday 10:00 AM | For: Local Shelter</p>
-                                <span class="status-badge success">Picked Up</span>
-                            </div>
-                            <button class="btn-secondary-outline">View Details <i
-                                    class="fas fa-arrow-right"></i></button>
-                        </div>
-
-                        <div class="donation-item">
-                            <img src="https://images.unsplash.com/photo-1584269630699-2d338f0d8b56?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80"
-                                alt="Food">
-                            <div class="donation-info">
-                                <h3>Canned Goods - 20 kg</h3>
-                                <p>Pickup: Tomorrow 1:00 PM | For: Food Bank</p>
-                                <span class="status-badge scheduled">Scheduled</span>
-                            </div>
-                            <button class="btn-secondary-outline">View Details <i
-                                    class="fas fa-arrow-right"></i></button>
-                        </div>
-                    </div>
-                </div>
             </div>
         </main>
     </div>
 
-    <script src="js/donor.js"></script>
+    <!-- Simple script for interactivity if needed -->
+    <script>
+        // Placeholder for future logic
+    </script>
 </body>
 
 </html>
