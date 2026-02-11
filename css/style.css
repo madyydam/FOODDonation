@@ -451,6 +451,7 @@ header h1 {
     display: -webkit-box;
     -webkit-line-clamp: 2;
     /* Limit text lines */
+    line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
@@ -460,6 +461,24 @@ header h1 {
         grid-template-columns: 1fr;
         /* Stack on mobile */
     }
+}
+
+.role-footer-links {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    font-size: 0.85rem;
+}
+
+.role-footer-links a {
+    color: #7f8c8d;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.role-footer-links a:hover {
+    color: #2ecc71;
 }
 
 /* Landing Page Specific Styles */
@@ -1028,40 +1047,41 @@ header h1 {
     border-color: #ccc;
 }
 
-.auth-container {
-    flex-direction: column;
-    height: auto;
-    min-height: 100vh;
-}
+@media (max-width: 768px) {
+    .auth-container {
+        flex-direction: column;
+        height: auto;
+        min-height: 100vh;
+    }
 
-.auth-image-side {
-    flex: 0 0 200px;
-    padding: 1rem;
-}
+    .auth-image-side {
+        flex: 0 0 200px;
+        padding: 1rem;
+    }
 
-.auth-image-side h1 {
-    font-size: 2rem;
-}
+    .auth-image-side h1 {
+        font-size: 2rem;
+    }
 
-.auth-form-side {
-    flex: 1;
-    padding: 2rem 1rem;
-}
+    .auth-form-side {
+        flex: 1;
+        padding: 2rem 1rem;
+    }
 
-.role-grid {
-    grid-template-columns: 1fr;
-}
+    .role-grid {
+        grid-template-columns: 1fr;
+    }
 
-/* Landing Page Mobile */
-.hero-content h1 {
-    font-size: 2.5rem;
-}
+    /* Landing Page Mobile */
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
 
-.cta-buttons {
-    flex-direction: column;
-}
+    .cta-buttons {
+        flex-direction: column;
+    }
 
-.stats-grid {
-    gap: 2rem;
-}
+    .stats-grid {
+        gap: 2rem;
+    }
 }
