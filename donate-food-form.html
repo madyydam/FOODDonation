@@ -6,420 +6,515 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Donate Food - Every Bite Matters</title>
     <link rel="stylesheet" href="css/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        /* Page-specific styles */
+        :root {
+            --primary: #2ecc71;
+            --primary-dark: #27ae60;
+            --bg: #f8fafc;
+            --text-dark: #1e293b;
+            --text-light: #64748b;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Outfit', sans-serif;
+        }
+
         body {
-            background: #f8f9fa;
-        }
-
-        .donate-header {
-            background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
-            padding: 1rem 5%;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        .donate-nav {
-            max-width: 1200px;
-            margin: 0 auto;
+            background-color: var(--bg);
+            height: 100vh;
+            overflow: hidden;
             display: flex;
-            justify-content: space-between;
             align-items: center;
+            justify-content: center;
         }
 
-        .donate-logo {
+        /* Split Screen Container */
+        .page-wrapper {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            background: white;
+        }
+
+        /* Left Side: Brand & Visuals */
+        .info-side {
+            flex: 1;
+            background: linear-gradient(135deg, #1d976c 0%, #2ecc71 100%);
+            padding: 3rem;
             color: white;
-            font-size: 1.5rem;
-            font-weight: 700;
-            text-decoration: none;
             display: flex;
-            align-items: center;
-            gap: 10px;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
         }
 
-        .nav-links {
+        .info-side::after {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            bottom: -100px;
+            right: -100px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.5rem;
+            font-weight: 800;
+            z-index: 2;
+        }
+
+        .brand i {
+            background: white;
+            color: var(--primary);
+            padding: 8px;
+            border-radius: 12px;
+        }
+
+        .hero-text {
+            z-index: 2;
+        }
+
+        .hero-text h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            letter-spacing: -1.5px;
+        }
+
+        .hero-text p {
+            font-size: 1.25rem;
+            opacity: 0.9;
+            max-width: 450px;
+            line-height: 1.6;
+        }
+
+        .stats-mini {
             display: flex;
             gap: 2rem;
-            align-items: center;
+            z-index: 2;
         }
 
-        .nav-links a {
-            color: rgba(255, 255, 255, 0.9);
+        .stat-item h3 {
+            font-size: 1.8rem;
+            font-weight: 800;
+        }
+
+        .stat-item p {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* Right Side: Form */
+        .form-side {
+            flex: 1.2;
+            padding: 2.5rem 4rem;
+            background: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .nav-back {
+            position: absolute;
+            top: 2rem;
+            right: 3rem;
+        }
+
+        .nav-back a {
             text-decoration: none;
-            font-weight: 500;
+            color: var(--text-light);
+            font-weight: 600;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
             transition: color 0.3s;
         }
 
-        .nav-links a:hover,
-        .nav-links a.active {
-            color: white;
+        .nav-back a:hover {
+            color: var(--primary);
         }
 
-        .hero-section {
-            background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
-            color: white;
-            padding: 4rem 5%;
-            text-align: center;
+        .form-header {
+            margin-bottom: 2rem;
         }
 
-        .hero-section h1 {
-            font-size: 2.5rem;
+        .form-header h2 {
+            font-size: 1.8rem;
+            color: var(--text-dark);
             font-weight: 800;
-            margin-bottom: 1rem;
+            letter-spacing: -0.5px;
         }
 
-        .hero-section p {
-            font-size: 1.2rem;
-            opacity: 0.95;
-            max-width: 700px;
-            margin: 0 auto;
+        .form-header p {
+            color: var(--text-light);
+            margin-top: 0.3rem;
         }
 
-        .form-container {
-            max-width: 900px;
-            margin: -3rem auto 3rem auto;
-            background: white;
-            border-radius: 20px;
-            padding: 3rem;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-            animation: fadeInUp 0.8s ease-out;
-        }
-
-        .form-section {
-            margin-bottom: 2.5rem;
-        }
-
-        .section-title {
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: #2c3e50;
-            margin-bottom: 1.5rem;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .section-title i {
-            color: #2ecc71;
-        }
-
-        .form-grid {
+        /* Grid Layout for Form */
+        .donation-form {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.2rem;
         }
 
-        .form-group {
+        .full-row {
+            grid-column: span 2;
+        }
+
+        .input-group {
             display: flex;
             flex-direction: column;
+            gap: 6px;
         }
 
-        .form-group.full-width {
-            grid-column: 1 / -1;
+        .input-group label {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
-        label {
-            font-weight: 600;
-            color: #34495e;
-            margin-bottom: 0.5rem;
+        .input-group input,
+        .input-group select,
+        .input-group textarea {
+            padding: 0.85rem 1rem;
+            border: 2px solid #f1f5f9;
+            border-radius: 12px;
             font-size: 0.95rem;
+            background: #f8fafc;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        input,
-        select,
-        textarea {
-            padding: 0.9rem 1.2rem;
-            border: 2px solid #e9ecef;
-            border-radius: 10px;
-            font-size: 1rem;
-            font-family: 'Poppins', sans-serif;
-            transition: all 0.3s;
-        }
-
-        input:focus,
-        select:focus,
-        textarea:focus {
+        .input-group input:focus,
+        .input-group select:focus,
+        .input-group textarea:focus {
             outline: none;
-            border-color: #2ecc71;
-            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+            border-color: var(--primary);
+            background: white;
+            box-shadow: 0 4px 12px rgba(46, 204, 113, 0.08);
         }
 
         textarea {
-            resize: vertical;
-            min-height: 100px;
+            min-height: 80px;
+            resize: none;
         }
 
         .submit-btn {
-            background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
+            grid-column: span 2;
+            background: linear-gradient(135deg, #1d976c 0%, #2ecc71 100%);
             color: white;
-            padding: 1.2rem 3rem;
+            padding: 1.1rem;
             border: none;
-            border-radius: 50px;
+            border-radius: 12px;
             font-size: 1.1rem;
-            font-weight: 700;
+            font-weight: 800;
             cursor: pointer;
-            width: 100%;
-            margin-top: 1rem;
-            box-shadow: 0 8px 25px rgba(46, 204, 113, 0.3);
-            transition: all 0.3s;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
+            gap: 12px;
+            margin-top: 0.5rem;
+            box-shadow: 0 10px 20px rgba(46, 204, 113, 0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
         }
 
         .submit-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 35px rgba(46, 204, 113, 0.4);
+            transform: translateY(-2px);
+            box-shadow: 0 15px 30px rgba(46, 204, 113, 0.3);
+        }
+
+        /* Success State */
+        .success-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .success-modal {
+            background: white;
+            padding: 4rem 3rem;
+            border-radius: 32px;
+            text-align: center;
+            max-width: 480px;
+            width: 90%;
+            animation: modalPop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        /* NEW ANIMATIONS */
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        /* Applying Animations */
+        .info-side .brand {
+            animation: fadeInLeft 0.8s ease-out forwards;
+        }
+
+        .info-side .hero-text h1 {
+            animation: fadeInLeft 0.8s ease-out 0.2s both;
+        }
+
+        .info-side .hero-text p {
+            animation: fadeInLeft 0.8s ease-out 0.4s both;
+        }
+
+        .info-side .stats-mini {
+            animation: fadeInLeft 0.8s ease-out 0.6s both;
+        }
+
+        .brand i {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .form-side {
+            animation: fadeInRight 0.8s ease-out forwards;
+        }
+
+        .form-header {
+            animation: fadeInUp 0.6s ease-out 0.3s both;
+        }
+
+        /* Staggered form field animations */
+        .donation-form>* {
+            animation: fadeInUp 0.6s ease-out both;
+        }
+
+        .donation-form>*:nth-child(1) {
+            animation-delay: 0.4s;
+        }
+
+        .donation-form>*:nth-child(2) {
+            animation-delay: 0.5s;
+        }
+
+        .donation-form>*:nth-child(3) {
+            animation-delay: 0.6s;
+        }
+
+        .donation-form>*:nth-child(4) {
+            animation-delay: 0.7s;
+        }
+
+        .donation-form>*:nth-child(5) {
+            animation-delay: 0.8s;
+        }
+
+        .donation-form>*:nth-child(6) {
+            animation-delay: 0.9s;
+        }
+
+        .donation-form>.submit-btn {
+            animation-delay: 1s;
+        }
+
+        .submit-btn {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .submit-btn:active {
-            transform: translateY(-1px);
+            transform: scale(0.95);
         }
 
-        .footer-minimal {
-            background: #2c3e50;
-            color: white;
-            padding: 2rem 5%;
-            text-align: center;
+        .input-group input:hover,
+        .input-group select:hover,
+        .input-group textarea:hover {
+            border-color: #cbd5e1;
         }
 
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-bottom: 1rem;
-            flex-wrap: wrap;
-        }
-
-        .footer-links a {
-            color: #ecf0f1;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        .footer-links a:hover {
-            color: #3498db;
-        }
-
-        @media (max-width: 768px) {
-            .nav-links {
+        @media (max-width: 1024px) {
+            .info-side {
                 display: none;
             }
 
-            .hero-section h1 {
-                font-size: 2rem;
+            body {
+                overflow-y: auto;
+                height: auto;
+                padding: 2rem 1rem;
             }
 
-            .form-container {
-                padding: 2rem 1.5rem;
+            .form-side {
+                flex: 1;
+                padding: 2rem;
             }
 
-            .form-grid {
-                grid-template-columns: 1fr;
+            .page-wrapper {
+                height: auto;
+                border-radius: 20px;
+                box-shadow: var(--shadow);
             }
         }
     </style>
 </head>
 
 <body>
-    <!-- Header -->
-    <header class="donate-header">
-        <nav class="donate-nav">
-            <a href="index.html" class="donate-logo">
-                <i class="fas fa-leaf"></i> Every Bite Matters
-            </a>
-            <div class="nav-links">
-                <a href="index.html">Home</a>
-                <a href="donate-food-form.html" class="active">Donate Food</a>
-                <a href="ngo.html">Browse Donations</a>
-                <a href="#impact">Impact</a>
-                <a href="login.html">Login</a>
+    <div class="page-wrapper">
+        <!-- Visual Section -->
+        <div class="info-side">
+            <div class="brand">
+                <i class="fas fa-leaf"></i>
+                <span>Every Bite Matters</span>
             </div>
-        </nav>
-    </header>
 
-    <!-- Hero -->
-    <section class="hero-section">
-        <h1>Donate Food</h1>
-        <p>Fill in details and our AI will match you with the best NGO instantly</p>
-    </section>
+            <div class="hero-text">
+                <h1>Share the Meal,<br>Spread the Love.</h1>
+                <p>Join thousands of donors who are using AI to ensure zero food waste. Every donation counts towards a
+                    hunger-free world.</p>
+            </div>
 
-    <!-- Form -->
-    <div class="form-container">
-        <form id="donationForm">
-            <!-- Personal Details -->
-            <div class="form-section">
-                <h2 class="section-title">
-                    <i class="fas fa-user"></i> Your Details
-                </h2>
-                <div class="form-grid">
-                    <div class="form-group">
-                        <label for="name">Your Name *</label>
-                        <input type="text" id="name" placeholder="John Doe" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email *</label>
-                        <input type="email" id="email" placeholder="john@example.com" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="phone">Phone Number *</label>
-                        <input type="tel" id="phone" placeholder="+91 98765 43210" required>
-                    </div>
+            <div class="stats-mini">
+                <div class="stat-item">
+                    <h3>50K+</h3>
+                    <p>Meals Delivered</p>
+                </div>
+                <div class="stat-item">
+                    <h3>200+</h3>
+                    <p>Partner NGOs</p>
                 </div>
             </div>
+        </div>
 
-            <!-- Food Details -->
-            <div class="form-section">
-                <h2 class="section-title">
-                    <i class="fas fa-utensils"></i> Food Details
-                </h2>
-                <div class="form-grid">
-                    <div class="form-group full-width">
-                        <label for="foodType">Food Type *</label>
-                        <input type="text" id="foodType" placeholder="Rice, Dal, Bread, Vegetables..." required>
-                    </div>
-                    <div class="form-group">
-                        <label for="quantity">Quantity (kg) *</label>
-                        <input type="number" id="quantity" placeholder="5" min="1" step="0.5" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="category">Category *</label>
-                        <select id="category" required>
-                            <option value="">Select Category</option>
-                            <option value="cooked">Cooked Food</option>
-                            <option value="raw">Raw Food</option>
-                            <option value="packaged">Packaged Food</option>
-                            <option value="fruits">Fruits & Vegetables</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="storage">Storage Temperature *</label>
-                        <select id="storage" required>
-                            <option value="">Select Temperature</option>
-                            <option value="room">Room Temperature</option>
-                            <option value="refrigerated">Refrigerated</option>
-                            <option value="frozen">Frozen</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="hoursSince">Hours Since Preparation</label>
-                        <input type="number" id="hoursSince" placeholder="2" min="0">
-                    </div>
-                    <div class="form-group">
-                        <label for="expiry">Expiry Date *</label>
-                        <input type="date" id="expiry" required>
-                    </div>
-                </div>
+        <!-- Form Section -->
+        <div class="form-side">
+            <div class="nav-back">
+                <a href="donor.html"><i class="fas fa-arrow-left"></i> Back to Dashboard</a>
             </div>
 
-            <!-- Pickup Details -->
-            <div class="form-section">
-                <h2 class="section-title">
-                    <i class="fas fa-map-marker-alt"></i> Pickup Details
-                </h2>
-                <div class="form-grid">
-                    <div class="form-group full-width">
-                        <label for="address">Pickup Address *</label>
-                        <textarea id="address" placeholder="Full address with landmark" required></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label for="pickupTime">Preferred Pickup Time *</label>
-                        <input type="datetime-local" id="pickupTime" required>
-                    </div>
-                    <div class="form-group full-width">
-                        <label for="notes">Additional Notes</label>
-                        <textarea id="notes" placeholder="Any special instructions..."></textarea>
-                    </div>
-                </div>
+            <div class="form-header">
+                <h2>Donation Form</h2>
+                <p>Fill in the details to match with nearby NGOs.</p>
             </div>
 
-            <!-- Submit Button -->
-            <button type="submit" class="submit-btn">
-                <i class="fas fa-robot"></i> Find Best NGO Match with AI
-            </button>
-        </form>
+            <form class="donation-form" id="donationForm">
+                <div class="input-group">
+                    <label>Your Name</label>
+                    <input type="text" id="name" placeholder="Enter your name" required>
+                </div>
+                <div class="input-group">
+                    <label>WhatsApp Number</label>
+                    <input type="tel" id="whatsapp" placeholder="+91 XXXX XXXX" required>
+                </div>
+
+                <div class="input-group full-row">
+                    <label>Food Item Description</label>
+                    <input type="text" id="foodDesc" placeholder="e.g. 10kg Rice and Dal combo" required>
+                </div>
+
+                <div class="input-group">
+                    <label>Quantity (kg/units)</label>
+                    <input type="number" id="qty" placeholder="10" min="1" required>
+                </div>
+                <div class="input-group">
+                    <label>Food Category</label>
+                    <select id="category" required>
+                        <option value="cooked">Cooked Food</option>
+                        <option value="raw">Raw Materials</option>
+                        <option value="packaged">Packaged Food</option>
+                    </select>
+                </div>
+
+                <div class="input-group full-row">
+                    <label>Pickup Location Address</label>
+                    <textarea id="address" placeholder="Enter your full pickup address" required></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn" id="submitBtn">
+                    <i class="fas fa-bolt"></i> Fast AI Match
+                </button>
+            </form>
+        </div>
     </div>
 
-    <!-- Footer -->
-    <footer class="footer-minimal">
-        <div class="footer-links">
-            <a href="index.html">Home</a>
-            <a href="donate-food-form.html">Donate Food</a>
-            <a href="ngo.html">Browse Donations</a>
-            <a href="#">Food Safety</a>
-            <a href="#">Impact</a>
-            <a href="#">Contact</a>
+    <!-- Success Modal -->
+    <div class="success-overlay" id="successOverlay">
+        <div class="success-modal">
+            <i class="fas fa-check-circle"></i>
+            <h2>Perfect Match!</h2>
+            <p>Our AI has found <b>Mumbai Food Bank</b> and 2 other NGOs within 2km of your location. A volunteer will
+                be at your doorstep within 20 minutes.</p>
+            <button onclick="window.location.href='donor.html'" class="submit-btn">Great, thanks!</button>
         </div>
-        <p>&copy; 2026 Every Bite Matters. All rights reserved.</p>
-    </footer>
+    </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <script src="js/database.js"></script>
     <script>
-        document.getElementById('donationForm').addEventListener('submit', async function (e) {
+        document.getElementById('donationForm').addEventListener('submit', function (e) {
             e.preventDefault();
+            const btn = document.getElementById('submitBtn');
+            const overlay = document.getElementById('successOverlay');
 
-            // Show loading state
-            const submitBtn = e.target.querySelector('.submit-btn');
-            const originalText = submitBtn.innerHTML;
-            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Finding Best Match...';
-            submitBtn.disabled = true;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Analyzing Distance & Demand...';
+            btn.style.opacity = '0.7';
+            btn.style.pointerEvents = 'none';
 
-            // Collect form data
-            const formData = {
-                donor_name: document.getElementById('name').value,
-                donor_email: document.getElementById('email').value,
-                donor_phone: document.getElementById('phone').value,
-                food_type: document.getElementById('foodType').value,
-                quantity: parseFloat(document.getElementById('quantity').value),
-                category: document.getElementById('category').value,
-                storage_temp: document.getElementById('storage').value,
-                hours_since_prep: parseInt(document.getElementById('hoursSince').value) || 0,
-                expiry_date: document.getElementById('expiry').value,
-                pickup_address: document.getElementById('address').value,
-                pickup_time: document.getElementById('pickupTime').value,
-                notes: document.getElementById('notes').value,
-                status: 'available',
-                created_at: new Date().toISOString()
-            };
-
-            try {
-                // Simulate AI matching (replace with actual logic)
-                await new Promise(resolve => setTimeout(resolve, 2000));
-
-                // Save to database (uncomment when database is ready)
-                // const { data, error } = await Database.donations.create(formData);
-                // if (error) throw error;
-
-                // Success
-                alert('✅ Success! We found 3 NGOs near you. Redirecting to matching page...');
-                // window.location.href = 'donation-matches.html';
-
-                // Reset form
-                e.target.reset();
-            } catch (error) {
-                console.error('Error:', error);
-                alert('❌ Something went wrong. Please try again.');
-            } finally {
-                submitBtn.innerHTML = originalText;
-                submitBtn.disabled = false;
-            }
+            // Simulate AI matching
+            setTimeout(() => {
+                overlay.style.display = 'flex';
+                this.reset();
+            }, 2000);
         });
-
-        // Set minimum date to today
-        const today = new Date().toISOString().split('T')[0];
-        document.getElementById('expiry').setAttribute('min', today);
-
-        // Set minimum pickup time to now
-        const now = new Date();
-        now.setMinutes(now.getMinutes() - now.getTimezoneOffset());
-        document.getElementById('pickupTime').setAttribute('min', now.toISOString().slice(0, 16));
     </script>
 </body>
 

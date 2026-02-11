@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard - From Surplus to Smiles</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -398,8 +400,8 @@
                     <h3>Geographical Activity</h3>
                     <p>Donation hotspots across cities</p>
                     <div class="map-placeholder">
-                        <img src="https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80"
-                            alt="Geographical Map">
+                        <img data-src="https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80"
+                            alt="Geographical Map" class="lazy">
                     </div>
                 </div>
             </div>
@@ -407,23 +409,8 @@
     </div>
 
     <script src="js/auth.js"></script>
+    <script src="js/main.js"></script>
     <script>
-        // Auth.requireAuth();
-
-        function toggleDashboardMenu() {
-            const menu = document.getElementById('dashboardMenu');
-            menu.style.display = menu.style.display === 'none' ? 'block' : 'none';
-        }
-
-        // Close menu when clicking outside
-        document.addEventListener('click', function (event) {
-            const menu = document.getElementById('dashboardMenu');
-            const avatar = document.querySelector('.user-avatar');
-            if (menu && !menu.contains(event.target) && event.target !== avatar) {
-                menu.style.display = 'none';
-            }
-        });
-
         // Daily Donations Trend Chart
         const dailyCtx = document.getElementById('dailyChart').getContext('2d');
         const dailyChart = new Chart(dailyCtx, {
@@ -527,22 +514,6 @@
                         }
                     }
                 }
-            }
-        });
-    </script>
-
-    <script>
-        function toggleRoleSwitcher() {
-            const menu = document.getElementById('roleSwitcher');
-            menu.style.display = menu.style.display === 'none' ? 'block' : 'none';
-        }
-
-        // Close menu when clicking outside
-        document.addEventListener('click', function (event) {
-            const menu = document.getElementById('roleSwitcher');
-            const button = event.target.closest('button[onclick="toggleRoleSwitcher()"]');
-            if (!button && menu && !menu.contains(event.target)) {
-                menu.style.display = 'none';
             }
         });
     </script>

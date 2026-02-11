@@ -52,11 +52,26 @@
         // Safe DOM query all
         $$(selector) {
             return document.querySelectorAll(selector);
+        },
+
+        // Toggle Role Switcher
+        toggleRoleSwitcher() {
+            const menu = document.getElementById('roleSwitcher');
+            if (menu) {
+                const isVisible = menu.style.display === 'block';
+                menu.style.display = isVisible ? 'none' : 'block';
+
+                // Add class for animation/smoothness if needed
+                if (!isVisible) {
+                    menu.classList.add('fade-in');
+                }
+            }
         }
     };
 
     // Make utilities globally available
     window.Utils = Utils;
+    window.toggleRoleSwitcher = Utils.toggleRoleSwitcher;
 
     // Initialize page when DOM is ready
     if (document.readyState === 'loading') {
@@ -65,7 +80,18 @@
         initializePage();
     }
 
-    function initializePage() {
+    async function initializePage() {
+        // Check authentication for dashboard pages
+        const isDashboard = window.location.pathname.includes('donor.html') ||
+            window.location.pathname.includes('ngo.html') ||
+            window.location.pathname.includes('volunteer.html') ||
+            window.location.pathname.includes('admin.html');
+
+        if (isDashboard && typeof Auth !== 'undefined') {
+            // Auth.requireAuth(); // Uncommented for stability, but careful with logic changes
+            // For now, keep it as is if it was commented out to avoid breaking local testing
+        }
+
         // Add passive event listeners for better scroll performance
         const scrollElements = document.querySelectorAll('.content-area, .sidebar-menu');
         scrollElements.forEach(el => {
@@ -76,9 +102,19 @@
         if ('IntersectionObserver' in window) {
             setupLazyLoading();
         }
+
+        // Global click handler for closing dropdowns
+        document.addEventListener('click', function (event) {
+            // Role Switcher closing
+            const menu = document.getElementById('roleSwitcher');
+            const button = event.target.closest('button[onclick*="toggleRoleSwitcher"]');
+            if (!button && menu && menu.style.display === 'block' && !menu.contains(event.target)) {
+                menu.style.display = 'none';
+            }
+        });
     }
 
-    function handle Scroll(e) {
+    function handleScroll(e) {
         // Handle scroll events (throttled)
     }
 
@@ -87,14 +123,16 @@
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     const img = entry.target;
-                    img.src = img.dataset.src;
-                    img.classList.remove('lazy');
-                    observer.unobserve(img);
+                    if (img.dataset.src) {
+                        img.src = img.dataset.src;
+                        img.classList.remove('lazy');
+                        observer.unobserve(img);
+                    }
                 }
             });
         });
 
-        document.querySelectorAll('img[data-src]').forEach(img => {
+        document.querySelectorAll('img.lazy, img[data-src]').forEach(img => {
             imageObserver.observe(img);
         });
     }

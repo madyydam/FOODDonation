@@ -6,129 +6,490 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NGO Registration - Every Bite Matters</title>
     <link rel="stylesheet" href="css/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
+        :root {
+            --primary: #e74c3c;
+            --primary-dark: #c0392b;
+            --bg: #f8fafc;
+            --text-dark: #1e293b;
+            --text-light: #64748b;
+        }
+
+        /* NGO specific theme is red-ish to distinguish from donor green */
+        .ngo-theme {
+            --primary: #e74c3c;
+            --primary-dark: #c0392b;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Outfit', sans-serif;
+        }
+
         body {
-            background: #f8f9fa;
+            background-color: var(--bg);
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        .page-header {
-            background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
-            padding: 4rem 5%;
-            color: white;
-            text-align: center;
-        }
-
-        .page-header h1 {
-            font-size: 2.5rem;
-            font-weight: 800;
-            margin-bottom: 1rem;
-        }
-
-        .page-header p {
-            font-size: 1.2rem;
-            opacity: 0.95;
-        }
-
-        .form-box {
-            max-width: 600px;
-            margin: -3rem auto 3rem;
+        .page-wrapper {
+            width: 100%;
+            height: 100vh;
+            display: flex;
             background: white;
-            border-radius: 20px;
+        }
+
+        /* Left Side: NGO Impact */
+        .info-side {
+            flex: 1;
+            background: linear-gradient(135deg, #c0392b 0%, #e74c3c 100%);
             padding: 3rem;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .info-side::after {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            top: -100px;
+            left: -100px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.5rem;
+            font-weight: 800;
+            z-index: 2;
+        }
+
+        .brand i {
+            background: white;
+            color: var(--primary);
+            padding: 8px;
+            border-radius: 12px;
+        }
+
+        .hero-text {
+            z-index: 2;
+        }
+
+        .hero-text h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            letter-spacing: -1.5px;
+        }
+
+        .hero-text p {
+            font-size: 1.25rem;
+            opacity: 0.9;
+            max-width: 450px;
+            line-height: 1.6;
+        }
+
+        .stats-mini {
+            display: flex;
+            gap: 2rem;
+            z-index: 2;
+        }
+
+        .stat-item h3 {
+            font-size: 1.8rem;
+            font-weight: 800;
+        }
+
+        .stat-item p {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* Right Side: Form */
+        .form-side {
+            flex: 1.2;
+            padding: 2.5rem 4rem;
+            background: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+        }
+
+        .nav-back {
+            position: absolute;
+            top: 2rem;
+            right: 3rem;
+        }
+
+        .nav-back a {
+            text-decoration: none;
+            color: var(--text-light);
+            font-weight: 600;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.3s;
+        }
+
+        .nav-back a:hover {
+            color: var(--primary);
+        }
+
+        .form-header {
+            margin-bottom: 2rem;
+        }
+
+        .form-header h2 {
+            font-size: 1.8rem;
+            color: var(--text-dark);
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+
+        .form-header p {
+            color: var(--text-light);
+            margin-top: 0.3rem;
+        }
+
+        .registration-form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.2rem;
+        }
+
+        .full-row {
+            grid-column: span 2;
         }
 
         .input-group {
-            margin-bottom: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
         }
 
         .input-group label {
-            display: block;
-            font-weight: 600;
-            color: #34495e;
-            margin-bottom: 0.5rem;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
-        .input-group input {
-            width: 100%;
-            padding: 1rem;
-            border: 2px solid #e9ecef;
-            border-radius: 10px;
-            font-size: 1rem;
-            font-family: 'Poppins', sans-serif;
-            transition: all 0.3s;
+        .input-group input,
+        .input-group select,
+        .input-group textarea {
+            padding: 0.85rem 1rem;
+            border: 2px solid #f1f5f9;
+            border-radius: 12px;
+            font-size: 0.95rem;
+            background: #f8fafc;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .input-group input:focus {
             outline: none;
-            border-color: #2ecc71;
-            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+            border-color: var(--primary);
+            background: white;
+            box-shadow: 0 4px 12px rgba(231, 76, 60, 0.08);
         }
 
-        .register-btn {
-            background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
+        .submit-btn {
+            grid-column: span 2;
+            background: linear-gradient(135deg, #c0392b 0%, #e74c3c 100%);
             color: white;
-            width: 100%;
-            padding: 1.2rem;
+            padding: 1.1rem;
             border: none;
-            border-radius: 50px;
+            border-radius: 12px;
             font-size: 1.1rem;
-            font-weight: 700;
+            font-weight: 800;
             cursor: pointer;
-            margin-top: 1rem;
-            box-shadow: 0 8px 25px rgba(46, 204, 113, 0.3);
-            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 0.5rem;
+            box-shadow: 0 10px 20px rgba(231, 76, 60, 0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
         }
 
-        .register-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 35px rgba(46, 204, 113, 0.4);
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 30px rgba(231, 76, 60, 0.3);
+        }
+
+        /* Animations */
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .info-side .brand {
+            animation: fadeInLeft 0.8s ease-out forwards;
+        }
+
+        .info-side .hero-text h1 {
+            animation: fadeInLeft 0.8s ease-out 0.2s both;
+        }
+
+        .info-side .hero-text p {
+            animation: fadeInLeft 0.8s ease-out 0.4s both;
+        }
+
+        .info-side .stats-mini {
+            animation: fadeInLeft 0.8s ease-out 0.6s both;
+        }
+
+        .brand i {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .form-side {
+            animation: fadeInRight 0.8s ease-out forwards;
+        }
+
+        .form-header {
+            animation: fadeInUp 0.6s ease-out 0.3s both;
+        }
+
+        .registration-form>* {
+            animation: fadeInUp 0.6s ease-out both;
+        }
+
+        .registration-form>*:nth-child(1) {
+            animation-delay: 0.4s;
+        }
+
+        .registration-form>*:nth-child(2) {
+            animation-delay: 0.5s;
+        }
+
+        .registration-form>*:nth-child(3) {
+            animation-delay: 0.6s;
+        }
+
+        .registration-form>*:nth-child(4) {
+            animation-delay: 0.7s;
+        }
+
+        .registration-form>.submit-btn {
+            animation-delay: 0.8s;
+        }
+
+        .success-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .success-modal {
+            background: white;
+            padding: 4rem 3rem;
+            border-radius: 32px;
+            text-align: center;
+            max-width: 480px;
+            width: 90%;
+            animation: modalPop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        @keyframes modalPop {
+            from {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .success-modal i {
+            font-size: 4rem;
+            color: var(--primary);
+            margin-bottom: 2rem;
+        }
+
+        @media (max-width: 1024px) {
+            .info-side {
+                display: none;
+            }
+
+            body {
+                overflow-y: auto;
+                height: auto;
+                padding: 2rem 1rem;
+            }
+
+            .form-side {
+                flex: 1;
+                padding: 2rem;
+            }
+
+            .page-wrapper {
+                height: auto;
+                border-radius: 20px;
+                box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+            }
         }
     </style>
 </head>
 
-<body>
-    <div class="page-header">
-        <h1>Request Food (NGO)</h1>
-        <p>Register your NGO and our AI will match you with nearby donors automatically.</p>
+<body class="ngo-theme">
+    <div class="page-wrapper">
+        <div class="info-side">
+            <div class="brand">
+                <i class="fas fa-hand-holding-heart"></i>
+                <span>Every Bite Matters</span>
+            </div>
+
+            <div class="hero-text">
+                <h1>Feed the Souls,<br>Empower Change.</h1>
+                <p>Register your NGO to receive real-time alerts for high-quality surplus food in your area. Let's work
+                    together to end hunger.</p>
+            </div>
+
+            <div class="stats-mini">
+                <div class="stat-item">
+                    <h3>120+</h3>
+                    <p>Verified NGOs</p>
+                </div>
+                <div class="stat-item">
+                    <h3>24/7</h3>
+                    <p>AI Support</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-side">
+            <div class="nav-back">
+                <a href="ngo.html"><i class="fas fa-arrow-left"></i> Back to Dashboard</a>
+            </div>
+
+            <div class="form-header">
+                <h2>NGO Registration</h2>
+                <p>Complete your profile to start receiving donation alerts.</p>
+            </div>
+
+            <form class="registration-form" id="ngoForm">
+                <div class="input-group full-row">
+                    <label>NGO Official Name</label>
+                    <input type="text" id="ngoName" placeholder="e.g. Annapurna Sewa Trust" required>
+                </div>
+
+                <div class="input-group">
+                    <label>Primary Location</label>
+                    <input type="text" id="location" placeholder="e.g. Bandra, Mumbai" required>
+                </div>
+
+                <div class="input-group">
+                    <label>Daily Serving Capacity</label>
+                    <input type="number" id="capacity" placeholder="500" min="1" required>
+                </div>
+
+                <div class="input-group full-row">
+                    <label>Official Contact Number</label>
+                    <input type="tel" id="contact" placeholder="+91 XXXX XXXX" required>
+                </div>
+
+                <button type="submit" class="submit-btn" id="submitBtn">
+                    <i class="fas fa-check-double"></i> Register NGO
+                </button>
+            </form>
+        </div>
     </div>
 
-    <div class="form-box">
-        <form id="ngoForm">
-            <div class="input-group">
-                <label for="ngoName">NGO Name</label>
-                <input type="text" id="ngoName" placeholder="Annapurna Trust" required>
-            </div>
-
-            <div class="input-group">
-                <label for="location">Area / Location</label>
-                <input type="text" id="location" placeholder="Bandra, Mumbai" required>
-            </div>
-
-            <div class="input-group">
-                <label for="capacity">Daily Capacity (meals)</label>
-                <input type="number" id="capacity" placeholder="300" min="1" required>
-            </div>
-
-            <div class="input-group">
-                <label for="contact">Contact Number</label>
-                <input type="tel" id="contact" placeholder="+91 98765 43210" required>
-            </div>
-
-            <button type="submit" class="register-btn">
-                Register & Start Receiving
-            </button>
-        </form>
+    <div class="success-overlay" id="successOverlay">
+        <div class="success-modal">
+            <i class="fas fa-certificate"></i>
+            <h2 style="font-size: 2rem; font-weight: 800; margin-bottom: 1rem;">Registration Sent!</h2>
+            <p style="color: var(--text-light); line-height: 1.6; margin-bottom: 2.5rem;">Your application is being
+                processed by our AI verification system. You will receive a confirmation on your registered number
+                within 1 hour.</p>
+            <button onclick="window.location.href='ngo.html'" class="submit-btn">Back to NGO Portal</button>
+        </div>
     </div>
 
     <script>
         document.getElementById('ngoForm').addEventListener('submit', function (e) {
             e.preventDefault();
-            alert('✅ NGO Registered Successfully! You will start receiving donation matches.');
-            this.reset();
+            const btn = document.getElementById('submitBtn');
+            const overlay = document.getElementById('successOverlay');
+
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Verifying NGO Credentials...';
+            btn.style.opacity = '0.7';
+            btn.style.pointerEvents = 'none';
+
+            setTimeout(() => {
+                overlay.style.display = 'flex';
+                this.reset();
+            }, 2000);
         });
     </script>
 </body>

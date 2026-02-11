@@ -75,34 +75,33 @@
                     style="font-size: 1.5rem; color: #2c3e50; margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
                     <i class="fas fa-robot"></i> AI-Powered Features
                 </h2>
-                <div
-                    style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 15px; margin-bottom: 30px;">
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 25px;">
                     <div onclick="window.location.href='ngo-request-form.html'"
-                        style="cursor: pointer; background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%); color: white; padding: 1.5rem; border-radius: 15px; box-shadow: 0 5px 20px rgba(46,204,113,0.3); transition: transform 0.3s;"
+                        style="cursor: pointer; background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%); color: white; padding: 1rem; border-radius: 15px; box-shadow: 0 5px 20px rgba(46,204,113,0.3); transition: transform 0.3s;"
                         onmouseover="this.style.transform='translateY(-5px)'"
                         onmouseout="this.style.transform='translateY(0)'">
                         <i class="fas fa-hand-holding-heart"
-                            style="font-size: 2rem; margin-bottom: 0.8rem; opacity: 0.9;"></i>
-                        <h3 style="color: white; margin-bottom: 0.5rem; font-size: 1.1rem;">Request Food</h3>
-                        <p style="color: rgba(255,255,255,0.9); font-size: 0.85rem; margin: 0;">Register your NGO for
+                            style="font-size: 1.5rem; margin-bottom: 0.8rem; opacity: 0.9;"></i>
+                        <h3 style="color: white; margin-bottom: 0.5rem; font-size: 0.95rem;">Request Food</h3>
+                        <p style="color: rgba(255,255,255,0.9); font-size: 0.75rem; margin: 0;">Register your NGO for
                             donations</p>
                     </div>
                     <div onclick="window.location.href='demand-insights.html'"
-                        style="cursor: pointer; background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%); color: white; padding: 1.5rem; border-radius: 15px; box-shadow: 0 5px 20px rgba(231,76,60,0.3); transition: transform 0.3s;"
+                        style="cursor: pointer; background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%); color: white; padding: 1rem; border-radius: 15px; box-shadow: 0 5px 20px rgba(231,76,60,0.3); transition: transform 0.3s;"
                         onmouseover="this.style.transform='translateY(-5px)'"
                         onmouseout="this.style.transform='translateY(0)'">
-                        <i class="fas fa-chart-bar" style="font-size: 2rem; margin-bottom: 0.8rem; opacity: 0.9;"></i>
-                        <h3 style="color: white; margin-bottom: 0.5rem; font-size: 1.1rem;">Demand Insights</h3>
-                        <p style="color: rgba(255,255,255,0.9); font-size: 0.85rem; margin: 0;">AI-powered demand
+                        <i class="fas fa-chart-bar" style="font-size: 1.5rem; margin-bottom: 0.8rem; opacity: 0.9;"></i>
+                        <h3 style="color: white; margin-bottom: 0.5rem; font-size: 0.95rem;">Demand Insights</h3>
+                        <p style="color: rgba(255,255,255,0.9); font-size: 0.75rem; margin: 0;">AI-powered demand
                             analysis</p>
                     </div>
                     <div onclick="window.location.href='smart-matching.html'"
-                        style="cursor: pointer; background: linear-gradient(135deg, #9b59b6 0%, #8e44ad 100%); color: white; padding: 1.5rem; border-radius: 15px; box-shadow: 0 5px 20px rgba(155,89,182,0.3); transition: transform 0.3s;"
+                        style="cursor: pointer; background: linear-gradient(135deg, #9b59b6 0%, #8e44ad 100%); color: white; padding: 1rem; border-radius: 15px; box-shadow: 0 5px 20px rgba(155,89,182,0.3); transition: transform 0.3s;"
                         onmouseover="this.style.transform='translateY(-5px)'"
                         onmouseout="this.style.transform='translateY(0)'">
-                        <i class="fas fa-robot" style="font-size: 2rem; margin-bottom: 0.8rem; opacity: 0.9;"></i>
-                        <h3 style="color: white; margin-bottom: 0.5rem; font-size: 1.1rem;">Smart Matching</h3>
-                        <p style="color: rgba(255,255,255,0.9); font-size: 0.85rem; margin: 0;">See how AI matches
+                        <i class="fas fa-robot" style="font-size: 1.5rem; margin-bottom: 0.8rem; opacity: 0.9;"></i>
+                        <h3 style="color: white; margin-bottom: 0.5rem; font-size: 0.95rem;">Smart Matching</h3>
+                        <p style="color: rgba(255,255,255,0.9); font-size: 0.75rem; margin: 0;">See how AI matches
                             donations</p>
                     </div>
                 </div>
@@ -154,8 +153,8 @@
                 <div class="donations-grid">
                     <!-- Card 1 -->
                     <div class="donation-card">
-                        <img src="https://images.unsplash.com/photo-1566385101042-1a0aa0c1268c?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80"
-                            alt="Mixed Vegetables" class="donation-card-img">
+                        <img data-src="https://images.unsplash.com/photo-1566385101042-1a0aa0c1268c?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80"
+                            alt="Mixed Vegetables" class="lazy donation-card-img">
                         <div class="donation-card-content">
                             <div class="donation-card-header">
                                 <h3 class="donation-card-title">Mixed Vegetables</h3>
@@ -174,8 +173,8 @@
 
                     <!-- Card 2 -->
                     <div class="donation-card">
-                        <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80"
-                            alt="Fresh Bread" class="donation-card-img">
+                        <img data-src="https://images.unsplash.com/photo-1509440159596-0249088772ff?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80"
+                            alt="Fresh Bread" class="lazy donation-card-img">
                         <div class="donation-card-content">
                             <div class="donation-card-header">
                                 <h3 class="donation-card-title">Fresh Bread</h3>
@@ -194,8 +193,8 @@
 
                     <!-- Card 3 -->
                     <div class="donation-card">
-                        <img src="https://images.unsplash.com/photo-1610832958506-aa56368176cf?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80"
-                            alt="Organic Fruits" class="donation-card-img">
+                        <img data-src="https://images.unsplash.com/photo-1610832958506-aa56368176cf?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80"
+                            alt="Organic Fruits" class="lazy donation-card-img">
                         <div class="donation-card-content">
                             <div class="donation-card-header">
                                 <h3 class="donation-card-title">Organic Fruits</h3>
@@ -214,8 +213,8 @@
 
                     <!-- Card 4 -->
                     <div class="donation-card">
-                        <img src="https://images.unsplash.com/photo-1628088062854-d1870b4553da?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80"
-                            alt="Dairy Products" class="donation-card-img">
+                        <img data-src="https://images.unsplash.com/photo-1628088062854-d1870b4553da?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80"
+                            alt="Dairy Products" class="lazy donation-card-img">
                         <div class="donation-card-content">
                             <div class="donation-card-header">
                                 <h3 class="donation-card-title">Dairy Products</h3>
@@ -234,8 +233,8 @@
 
                     <!-- Card 5 -->
                     <div class="donation-card">
-                        <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80"
-                            alt="Cooked Meals" class="donation-card-img">
+                        <img data-src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80"
+                            alt="Cooked Meals" class="lazy donation-card-img">
                         <div class="donation-card-content">
                             <div class="donation-card-header">
                                 <h3 class="donation-card-title">Cooked Meals</h3>
@@ -254,8 +253,8 @@
 
                     <!-- Card 6 -->
                     <div class="donation-card">
-                        <img src="https://images.unsplash.com/photo-1464454709131-ffd692591ee5?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80"
-                            alt="Rice & Grains" class="donation-card-img">
+                        <img data-src="https://images.unsplash.com/photo-1464454709131-ffd692591ee5?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80"
+                            alt="Rice & Grains" class="lazy donation-card-img">
                         <div class="donation-card-content">
                             <div class="donation-card-header">
                                 <h3 class="donation-card-title">Rice & Grains</h3>
@@ -277,23 +276,7 @@
     </div>
 
     <script src="js/auth.js"></script>
-    <script>
-        // Auth.requireAuth();
-
-        function toggleRoleSwitcher() {
-            const menu = document.getElementById('roleSwitcher');
-            menu.style.display = menu.style.display === 'none' ? 'block' : 'none';
-        }
-
-        // Close menu when clicking outside
-        document.addEventListener('click', function (event) {
-            const menu = document.getElementById('roleSwitcher');
-            const button = event.target.closest('button[onclick="toggleRoleSwitcher()"]');
-            if (!button && menu && !menu.contains(event.target)) {
-                menu.style.display = 'none';
-            }
-        });
-    </script>
+    <script src="js/main.js"></script>
 </body>
 
 </html>
