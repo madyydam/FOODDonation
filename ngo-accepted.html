@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accepted Deliveries - NGO Dashboard</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <i class="fas fa-hand-holding-heart"></i> NGO Portal
+            </div>
+            <ul class="sidebar-menu">
+                <li><a href="ngo.html"><i class="fas fa-search"></i> Browse Donations</a></li>
+                <li><a href="ngo-accepted.html" class="active"><i class="fas fa-truck"></i> Accepted Deliveries</a></li>
+                <li><a href="#"><i class="fas fa-history"></i> Claims History</a></li>
+            </ul>
+            <div class="sidebar-footer">
+                <p>&copy; 2024 From Surplus to Smiles.</p>
+                <div style="margin-top: 10px;">
+                    <button class="btn-secondary-outline" onclick="Auth.logout()"
+                        style="width: 100%; justify-content: center; border: 1px solid rgba(255,255,255,0.2); color: #ecf0f1;">Logout</button>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="dashboard-header">
+                <div class="brand">
+                    <i class="fas fa-leaf"></i> From Surplus to Smiles
+                </div>
+                <div class="user-profile">
+                    <i class="far fa-bell notification-icon"></i>
+                    <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80"
+                        alt="NGO User" class="user-avatar">
+                </div>
+            </header>
+
+            <div class="content-area">
+                <h1 style="font-size: 1.8rem; color: #2c3e50; margin-bottom: 20px;">Accepted Deliveries</h1>
+                <p style="color: #7f8c8d; margin-bottom: 30px;">Track your accepted donations in real-time</p>
+
+                <!-- Tracking Card 1 -->
+                <div class="tracking-card active-green">
+                    <div class="tracking-header">
+                        <h3 class="tracking-title">Fresh Bread - 8 kg</h3>
+                        <img src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80"
+                            alt="Volunteer" class="volunteer-avatar-small">
+                    </div>
+
+                    <div class="tracking-details">
+                        <div class="tracking-row">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span><strong>Pickup:</strong> City Bakery, 123 Main Street</span>
+                        </div>
+                        <div class="tracking-row">
+                            <i class="fas fa-map-pin"></i>
+                            <span><strong>Dropoff:</strong> Community Center, 456 Park Avenue</span>
+                        </div>
+                        <div class="tracking-row">
+                            <i class="far fa-clock"></i>
+                            <span><strong>ETA:</strong> 25 minutes</span>
+                        </div>
+                    </div>
+
+                    <!-- Progress Tracker -->
+                    <div class="progress-tracker">
+                        <div class="progress-step active">
+                            <div class="step-circle"></div>
+                            <div class="step-label">Pending</div>
+                        </div>
+                        <div class="progress-step active">
+                            <div class="step-circle"></div>
+                            <div class="step-label">Assigned</div>
+                        </div>
+                        <div class="progress-step active">
+                            <div class="step-circle"></div>
+                            <div class="step-label">Picked Up</div>
+                        </div>
+                        <div class="progress-step">
+                            <div class="step-circle"></div>
+                            <div class="step-label">Delivered</div>
+                        </div>
+                    </div>
+
+                    <div class="tracking-actions">
+                        <button class="btn-contact">
+                            <i class="fas fa-phone"></i> Contact Volunteer
+                        </button>
+                        <button class="btn-outline-gray">
+                            <i class="fas fa-exclamation-triangle"></i> Report Issue
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Tracking Card 2 -->
+                <div class="tracking-card active-green">
+                    <div class="tracking-header">
+                        <h3 class="tracking-title">Mixed Vegetables - 12 kg</h3>
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80"
+                            alt="Volunteer" class="volunteer-avatar-small">
+                    </div>
+
+                    <div class="tracking-details">
+                        <div class="tracking-row">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span><strong>Pickup:</strong> Ramesh Store, 789 Market Road</span>
+                        </div>
+                        <div class="tracking-row">
+                            <i class="fas fa-map-pin"></i>
+                            <span><strong>Dropoff:</strong> Food Bank, 321 Oak Street</span>
+                        </div>
+                        <div class="tracking-row">
+                            <i class="far fa-clock"></i>
+                            <span><strong>ETA:</strong> 10 minutes</span>
+                        </div>
+                    </div>
+
+                    <!-- Progress Tracker -->
+                    <div class="progress-tracker">
+                        <div class="progress-step active">
+                            <div class="step-circle"></div>
+                            <div class="step-label">Pending</div>
+                        </div>
+                        <div class="progress-step active">
+                            <div class="step-circle"></div>
+                            <div class="step-label">Assigned</div>
+                        </div>
+                        <div class="progress-step active">
+                            <div class="step-circle"></div>
+                            <div class="step-label">Picked Up</div>
+                        </div>
+                        <div class="progress-step">
+                            <div class="step-circle"></div>
+                            <div class="step-label">Delivered</div>
+                        </div>
+                    </div>
+
+                    <div class="tracking-actions">
+                        <button class="btn-contact">
+                            <i class="fas fa-phone"></i> Contact Volunteer
+                        </button>
+                        <button class="btn-outline-gray">
+                            <i class="fas fa-exclamation-triangle"></i> Report Issue
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Tracking Card 3 - Delivered -->
+                <div class="tracking-card">
+                    <div class="tracking-header">
+                        <h3 class="tracking-title">Organic Fruits - 15 kg</h3>
+                        <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80"
+                            alt="Volunteer" class="volunteer-avatar-small">
+                    </div>
+
+                    <div class="tracking-details">
+                        <div class="tracking-row">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span><strong>Pickup:</strong> Green Farm Market, 555 Grove Lane</span>
+                        </div>
+                        <div class="tracking-row">
+                            <i class="fas fa-map-pin"></i>
+                            <span><strong>Dropoff:</strong> Shelter Home, 999 Elm Street</span>
+                        </div>
+                        <div class="tracking-row">
+                            <i class="fas fa-check-circle" style="color: #2ecc71;"></i>
+                            <span><strong>Status:</strong> Delivered successfully</span>
+                        </div>
+                    </div>
+
+                    <!-- Progress Tracker - All Complete -->
+                    <div class="progress-tracker">
+                        <div class="progress-step active">
+                            <div class="step-circle"></div>
+                            <div class="step-label">Pending</div>
+                        </div>
+                        <div class="progress-step active">
+                            <div class="step-circle"></div>
+                            <div class="step-label">Assigned</div>
+                        </div>
+                        <div class="progress-step active">
+                            <div class="step-circle"></div>
+                            <div class="step-label">Picked Up</div>
+                        </div>
+                        <div class="progress-step active">
+                            <div class="step-circle"></div>
+                            <div class="step-label">Delivered</div>
+                        </div>
+                    </div>
+
+                    <div class="tracking-actions">
+                        <button class="btn-outline-gray">
+                            <i class="fas fa-star"></i> Rate Volunteer
+                        </button>
+                        <button class="btn-outline-gray">
+                            <i class="fas fa-receipt"></i> View Receipt
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <script src="js/auth.js"></script>
+    <script>
+        // Auth.requireAuth();
+    </script>
+</body>
+
+</html>

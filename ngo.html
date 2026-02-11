@@ -19,7 +19,8 @@
                 <i class="fas fa-hand-holding-heart"></i> NGO Portal
             </div>
             <ul class="sidebar-menu">
-                <li><a href="#" class="active"><i class="fas fa-search"></i> Find Food</a></li>
+                <li><a href="ngo.html" class="active"><i class="fas fa-search"></i> Browse Donations</a></li>
+                <li><a href="ngo-accepted.html"><i class="fas fa-truck"></i> Accepted Deliveries</a></li>
                 <li><a href="#"><i class="fas fa-history"></i> Claims History</a></li>
             </ul>
             <div class="sidebar-footer">
@@ -45,36 +46,168 @@
             </header>
 
             <div class="content-area">
-                <h1 class="welcome-text">Welcome, NGO Partner!</h1>
+                <h1 style="font-size: 1.8rem; color: #2c3e50; margin-bottom: 20px;">Browse Available Donations</h1>
 
-                <!-- Stats Section -->
-                <div class="stats-row">
-                    <div class="stat-card">
-                        <h3>Meals Distributed</h3>
-                        <div class="stat-value">3,500</div>
-                        <p class="stat-desc">this month</p>
+                <!-- Filter Bar -->
+                <div class="filter-container">
+                    <div class="filter-group">
+                        <label>Distance (km)</label>
+                        <select>
+                            <option>Any</option>
+                            <option>0-5 km</option>
+                            <option>5-10 km</option>
+                            <option>10-20 km</option>
+                        </select>
                     </div>
-                    <div class="stat-card">
-                        <h3>Active Requests</h3>
-                        <div class="stat-value">5</div>
-                        <p class="stat-desc">pending pickup</p>
+                    <div class="filter-group">
+                        <label>Food Type</label>
+                        <select>
+                            <option>All Types</option>
+                            <option>Vegetables</option>
+                            <option>Fruits</option>
+                            <option>Baked Goods</option>
+                            <option>Dairy</option>
+                            <option>Cooked Meals</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label>Quantity (kg)</label>
+                        <input type="number" placeholder="Min" style="width: 100%;">
+                    </div>
+                    <div class="filter-group">
+                        <label>Expiry</label>
+                        <select>
+                            <option>Any</option>
+                            <option>Today</option>
+                            <option>Tomorrow</option>
+                            <option>This Week</option>
+                        </select>
+                    </div>
+                    <div class="filter-actions">
+                        <button class="btn-primary" style="padding: 8px 20px; width: auto;">Apply Filters</button>
+                        <button class="btn-secondary-outline" style="padding: 8px 15px; width: auto;">Clear</button>
                     </div>
                 </div>
 
-                <!-- Available Donations List -->
-                <div class="dashboard-card">
-                    <h2>Available Donations Near You</h2>
-                    <div class="donations-list">
-                        <div class="donation-item">
-                            <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80"
-                                alt="Food">
-                            <div class="donation-info">
-                                <h3>Fresh Produce - 15 kg</h3>
-                                <p>Location: Central Market | Pickup: Today 5:00 PM</p>
-                                <span class="status-badge pending">Available</span>
+                <!-- Donations Grid -->
+                <div class="donations-grid">
+                    <!-- Card 1 -->
+                    <div class="donation-card">
+                        <img src="https://images.unsplash.com/photo-1566385101042-1a0aa0c1268c?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80"
+                            alt="Mixed Vegetables" class="donation-card-img">
+                        <div class="donation-card-content">
+                            <div class="donation-card-header">
+                                <h3 class="donation-card-title">Mixed Vegetables</h3>
+                                <span class="donation-card-weight">12 kg</span>
                             </div>
-                            <button class="btn-primary"
-                                style="width: auto; padding: 5px 15px; font-size: 0.85rem;">Claim</button>
+                            <div class="donation-meta">
+                                <span><i class="fas fa-map-marker-alt"></i> 2.3 km away</span>
+                            </div>
+                            <div class="donor-info">
+                                <span style="color: #7f8c8d;">Ramesh Store</span>
+                                <span class="rating-badge"><i class="fas fa-star"></i> 4.8</span>
+                            </div>
+                            <button class="btn-accept">Accept Donation</button>
+                        </div>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="donation-card">
+                        <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80"
+                            alt="Fresh Bread" class="donation-card-img">
+                        <div class="donation-card-content">
+                            <div class="donation-card-header">
+                                <h3 class="donation-card-title">Fresh Bread</h3>
+                                <span class="donation-card-weight">8 kg</span>
+                            </div>
+                            <div class="donation-meta">
+                                <span><i class="fas fa-map-marker-alt"></i> 3.5 km away</span>
+                            </div>
+                            <div class="donor-info">
+                                <span style="color: #7f8c8d;">City Bakery</span>
+                                <span class="rating-badge"><i class="fas fa-star"></i> 4.9</span>
+                            </div>
+                            <button class="btn-accept">Accept Donation</button>
+                        </div>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="donation-card">
+                        <img src="https://images.unsplash.com/photo-1610832958506-aa56368176cf?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80"
+                            alt="Organic Fruits" class="donation-card-img">
+                        <div class="donation-card-content">
+                            <div class="donation-card-header">
+                                <h3 class="donation-card-title">Organic Fruits</h3>
+                                <span class="donation-card-weight">15 kg</span>
+                            </div>
+                            <div class="donation-meta">
+                                <span><i class="fas fa-map-marker-alt"></i> 1.2 km away</span>
+                            </div>
+                            <div class="donor-info">
+                                <span style="color: #7f8c8d;">Green Farm Market</span>
+                                <span class="rating-badge"><i class="fas fa-star"></i> 5.0</span>
+                            </div>
+                            <button class="btn-accept">Accept Donation</button>
+                        </div>
+                    </div>
+
+                    <!-- Card 4 -->
+                    <div class="donation-card">
+                        <img src="https://images.unsplash.com/photo-1628088062854-d1870b4553da?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80"
+                            alt="Dairy Products" class="donation-card-img">
+                        <div class="donation-card-content">
+                            <div class="donation-card-header">
+                                <h3 class="donation-card-title">Dairy Products</h3>
+                                <span class="donation-card-weight">10 kg</span>
+                            </div>
+                            <div class="donation-meta">
+                                <span><i class="fas fa-map-marker-alt"></i> 4.1 km away</span>
+                            </div>
+                            <div class="donor-info">
+                                <span style="color: #7f8c8d;">Fresh Dairy Co.</span>
+                                <span class="rating-badge"><i class="fas fa-star"></i> 4.7</span>
+                            </div>
+                            <button class="btn-accept">Accept Donation</button>
+                        </div>
+                    </div>
+
+                    <!-- Card 5 -->
+                    <div class="donation-card">
+                        <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80"
+                            alt="Cooked Meals" class="donation-card-img">
+                        <div class="donation-card-content">
+                            <div class="donation-card-header">
+                                <h3 class="donation-card-title">Cooked Meals</h3>
+                                <span class="donation-card-weight">20 kg</span>
+                            </div>
+                            <div class="donation-meta">
+                                <span><i class="fas fa-map-marker-alt"></i> 5.8 km away</span>
+                            </div>
+                            <div class="donor-info">
+                                <span style="color: #7f8c8d;">Wedding Catering</span>
+                                <span class="rating-badge"><i class="fas fa-star"></i> 4.6</span>
+                            </div>
+                            <button class="btn-accept">Accept Donation</button>
+                        </div>
+                    </div>
+
+                    <!-- Card 6 -->
+                    <div class="donation-card">
+                        <img src="https://images.unsplash.com/photo-1464454709131-ffd692591ee5?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80"
+                            alt="Rice & Grains" class="donation-card-img">
+                        <div class="donation-card-content">
+                            <div class="donation-card-header">
+                                <h3 class="donation-card-title">Rice & Grains</h3>
+                                <span class="donation-card-weight">25 kg</span>
+                            </div>
+                            <div class="donation-meta">
+                                <span><i class="fas fa-map-marker-alt"></i> 3.0 km away</span>
+                            </div>
+                            <div class="donor-info">
+                                <span style="color: #7f8c8d;">Grocery Wholesale</span>
+                                <span class="rating-badge"><i class="fas fa-star"></i> 4.8</span>
+                            </div>
+                            <button class="btn-accept">Accept Donation</button>
                         </div>
                     </div>
                 </div>
