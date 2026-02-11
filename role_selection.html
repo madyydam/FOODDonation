@@ -64,12 +64,9 @@
     <script src="js/main.js"></script>
     <script>
         function selectRole(role) {
-            // In a real app, we would save this selection
-            console.log('Selected role:', role);
-            if (role === 'donor') window.location.href = 'donor.html';
-            else if (role === 'ngo') window.location.href = 'ngo.html';
-            else if (role === 'volunteer') window.location.href = 'volunteer.html';
-            else if (role === 'admin') window.location.href = 'admin.html';
+            // Save role to localStorage or pass via URL
+            localStorage.setItem('selectedRole', role);
+            window.location.href = 'signup.html';
         }
     </script>
 </body>

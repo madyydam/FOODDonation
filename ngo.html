@@ -4,34 +4,88 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NGO Dashboard</title>
+    <title>NGO Dashboard - Feed More Waste Less</title>
     <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 
 <body>
     <div class="dashboard-container">
-        <nav class="sidebar">
-            <h2>NGO Panel</h2>
-            <ul>
-                <li><a href="#">Dashboard</a></li>
-                <li><a href="#">Food Requests</a></li>
-                <li><a href="#">Inventory</a></li>
-                <li><a href="index.html">Logout</a></li>
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <i class="fas fa-hand-holding-heart"></i> NGO Portal
+            </div>
+            <ul class="sidebar-menu">
+                <li><a href="#" class="active"><i class="fas fa-search"></i> Find Food</a></li>
+                <li><a href="#"><i class="fas fa-history"></i> Claims History</a></li>
             </ul>
-        </nav>
-        <div class="main-content">
-            <header>
-                <h1>Dashboard</h1>
-                <div class="user-info">Welcome, NGO</div>
+            <div class="sidebar-footer">
+                <p>&copy; 2024 From Surplus to Smiles.</p>
+                <div style="margin-top: 10px;">
+                    <button class="btn-secondary-outline" onclick="Auth.logout()"
+                        style="width: 100%; justify-content: center; border: 1px solid rgba(255,255,255,0.2); color: #ecf0f1;">Logout</button>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="dashboard-header">
+                <div class="brand">
+                    <i class="fas fa-leaf"></i> From Surplus to Smiles
+                </div>
+                <div class="user-profile">
+                    <i class="far fa-bell notification-icon"></i>
+                    <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80"
+                        alt="NGO User" class="user-avatar">
+                </div>
             </header>
-            <main class="content-area">
-                <p>Welcome to the NGO dashboard. Manage incoming food donations here.</p>
-            </main>
-        </div>
+
+            <div class="content-area">
+                <h1 class="welcome-text">Welcome, NGO Partner!</h1>
+
+                <!-- Stats Section -->
+                <div class="stats-row">
+                    <div class="stat-card">
+                        <h3>Meals Distributed</h3>
+                        <div class="stat-value">3,500</div>
+                        <p class="stat-desc">this month</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Active Requests</h3>
+                        <div class="stat-value">5</div>
+                        <p class="stat-desc">pending pickup</p>
+                    </div>
+                </div>
+
+                <!-- Available Donations List -->
+                <div class="dashboard-card">
+                    <h2>Available Donations Near You</h2>
+                    <div class="donations-list">
+                        <div class="donation-item">
+                            <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80"
+                                alt="Food">
+                            <div class="donation-info">
+                                <h3>Fresh Produce - 15 kg</h3>
+                                <p>Location: Central Market | Pickup: Today 5:00 PM</p>
+                                <span class="status-badge pending">Available</span>
+                            </div>
+                            <button class="btn-primary"
+                                style="width: auto; padding: 5px 15px; font-size: 0.85rem;">Claim</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
     </div>
 
-    <script src="js/main.js"></script>
-    <script src="js/ngo.js"></script>
+    <script src="js/auth.js"></script>
+    <script>
+        Auth.requireAuth();
+    </script>
 </body>
 
 </html>

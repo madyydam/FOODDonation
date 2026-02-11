@@ -4,33 +4,141 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Donor Dashboard</title>
+    <title>Donor Dashboard - Feed More Waste Less</title>
     <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 
 <body>
     <div class="dashboard-container">
-        <nav class="sidebar">
-            <h2>Donor Panel</h2>
-            <ul>
-                <li><a href="#">Dashboard</a></li>
-                <li><a href="#">My Donations</a></li>
-                <li><a href="#">Profile</a></li>
-                <li><a href="index.html">Logout</a></li>
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <i class="fas fa-boxes"></i> Donor Dashboard
+            </div>
+            <ul class="sidebar-menu">
+                <li><a href="#" class="active"><i class="fas fa-utensils"></i> Active Donations</a></li>
+                <!-- Future links could go here -->
             </ul>
-        </nav>
-        <div class="main-content">
-            <header>
-                <h1>Dashboard</h1>
-                <div class="user-info">Welcome, Donor</div>
+            <div class="sidebar-footer">
+                <p>&copy; 2024 From Surplus to Smiles. All rights reserved.</p>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="dashboard-header">
+                <div class="brand">
+                    <i class="fas fa-leaf"></i> From Surplus to Smiles
+                </div>
+                <div class="user-profile">
+                    <i class="far fa-bell notification-icon"></i>
+                    <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80"
+                        alt="User" class="user-avatar">
+                </div>
             </header>
-            <main class="content-area">
-                <p>Welcome to your donor dashboard. Here you can manage your donations.</p>
-            </main>
-        </div>
+
+            <div class="content-area">
+                <h1 class="welcome-text">Welcome, Donor!</h1>
+
+                <!-- Stats Section -->
+                <div class="stats-row">
+                    <div class="stat-card">
+                        <h3>Meals Saved</h3>
+                        <div class="stat-value">1,245</div>
+                        <p class="stat-desc">from surplus food this month</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>CO<sub>2</sub> Reduced</h3>
+                        <div class="stat-value">750kg</div>
+                        <p class="stat-desc">by preventing food waste this month</p>
+                    </div>
+                </div>
+
+                <!-- New Donation Form -->
+                <div class="dashboard-card">
+                    <h2>Make a New Food Donation</h2>
+                    <form id="donationForm">
+                        <div class="form-row">
+                            <div class="form-group half">
+                                <label for="foodType">Food Type</label>
+                                <select id="foodType" required>
+                                    <option value="" disabled selected>Select food type</option>
+                                    <option value="cooked">Cooked Meals</option>
+                                    <option value="raw">Raw Ingredients</option>
+                                    <option value="packaged">Packaged Food</option>
+                                </select>
+                            </div>
+                            <div class="form-group half">
+                                <label for="quantity">Quantity (kg)</label>
+                                <input type="number" id="quantity" placeholder="e.g., 5" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="address">Pickup Address</label>
+                            <input type="text" id="address" placeholder="Street, City, Postcode" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="pickupTime">Preferred Pickup Time</label>
+                            <input type="datetime-local" id="pickupTime" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="notes">Additional Notes</label>
+                            <textarea id="notes" placeholder="Any specific instructions or allergies?"></textarea>
+                        </div>
+                        <button type="submit" class="btn-primary" style="width: auto; padding: 10px 30px;">Donate
+                            Now</button>
+                    </form>
+                </div>
+
+                <!-- Active Donations List -->
+                <div class="dashboard-card">
+                    <h2>Your Active Donations</h2>
+                    <div class="donations-list">
+                        <!-- Items will be populated by JS or static for now -->
+                        <div class="donation-item">
+                            <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80"
+                                alt="Food">
+                            <div class="donation-info">
+                                <h3>Fresh Produce - 10 kg</h3>
+                                <p>Pickup: Today 3:00 PM | For: Community Kitchen</p>
+                                <span class="status-badge pending">Pending Pickup</span>
+                            </div>
+                            <button class="btn-secondary-outline">View Details <i
+                                    class="fas fa-arrow-right"></i></button>
+                        </div>
+
+                        <div class="donation-item">
+                            <img src="https://images.unsplash.com/photo-1577308856961-8e9ec50d0c6b?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80"
+                                alt="Food">
+                            <div class="donation-info">
+                                <h3>Baked Goods - 5 kg</h3>
+                                <p>Pickup: Yesterday 10:00 AM | For: Local Shelter</p>
+                                <span class="status-badge success">Picked Up</span>
+                            </div>
+                            <button class="btn-secondary-outline">View Details <i
+                                    class="fas fa-arrow-right"></i></button>
+                        </div>
+
+                        <div class="donation-item">
+                            <img src="https://images.unsplash.com/photo-1584269630699-2d338f0d8b56?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80"
+                                alt="Food">
+                            <div class="donation-info">
+                                <h3>Canned Goods - 20 kg</h3>
+                                <p>Pickup: Tomorrow 1:00 PM | For: Food Bank</p>
+                                <span class="status-badge scheduled">Scheduled</span>
+                            </div>
+                            <button class="btn-secondary-outline">View Details <i
+                                    class="fas fa-arrow-right"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
     </div>
 
-    <script src="js/main.js"></script>
     <script src="js/donor.js"></script>
 </body>
 
