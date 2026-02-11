@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile - Volunteer Dashboard</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -236,19 +238,19 @@
                 <div class="user-profile">
                     <i class="far fa-bell notification-icon"></i>
                     <a href="volunteer-profile.html">
-                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Arjun&backgroundColor=add8e6"
-                            alt="Arjun Singh" class="user-avatar" style="cursor: pointer;">
+                        <img data-src="https://api.dicebear.com/7.x/avataaars/svg?seed=Arjun&backgroundColor=add8e6"
+                            alt="Arjun Singh" class="user-avatar lazy" style="cursor: pointer;">
                     </a>
                 </div>
             </header>
 
             <div class="content-area">
-                <div class="profile-container">
+                <div class="profile-container fade-in">
                     <!-- Profile Info Card -->
                     <div class="profile-card">
                         <div class="profile-header-section">
-                            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Arjun&backgroundColor=e0f2fe"
-                                alt="Arjun Singh" class="profile-avatar-large">
+                            <img data-src="https://api.dicebear.com/7.x/avataaars/svg?seed=Arjun&backgroundColor=e0f2fe"
+                                alt="Arjun Singh" class="profile-avatar-large lazy">
                             <div class="profile-info">
                                 <h1>Arjun Singh</h1>
                                 <p class="email"><i class="far fa-envelope"></i> arjun.singh@gmail.com</p>
@@ -330,6 +332,8 @@
             </div>
         </main>
     </div>
+    <script src="js/auth.js"></script>
+    <script src="js/main.js"></script>
 </body>
 
 </html>

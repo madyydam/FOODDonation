@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Accepted Deliveries - NGO Dashboard</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -41,9 +43,10 @@
                 <div class="user-profile">
                     <i class="far fa-bell notification-icon"></i>
                     <div style="position: relative;">
-                        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80"
-                            alt="NGO User" class="user-avatar" style="cursor: pointer;" onclick="toggleDashboardMenu()">
-                        <div id="dashboardMenu" class="dashboard-switcher" style="display: none;">
+                        <img data-src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80"
+                            alt="NGO User" class="user-avatar lazy" style="cursor: pointer;"
+                            onclick="Utils.toggleRoleSwitcher()">
+                        <div id="roleSwitcher" class="dashboard-switcher" style="display: none;">
                             <div class="switcher-header">Switch Dashboard</div>
                             <a href="donor.html" class="switcher-item">
                                 <i class="fas fa-box-open"></i> Donor Dashboard
@@ -62,7 +65,7 @@
                 </div>
             </header>
 
-            <div class="content-area">
+            <div class="content-area fade-in">
                 <h1 style="font-size: 1.8rem; color: #2c3e50; margin-bottom: 20px;">Accepted Deliveries</h1>
                 <p style="color: #7f8c8d; margin-bottom: 30px;">Track your accepted donations in real-time</p>
 
@@ -70,8 +73,8 @@
                 <div class="tracking-card active-green">
                     <div class="tracking-header">
                         <h3 class="tracking-title">Fresh Bread - 8 kg</h3>
-                        <img src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80"
-                            alt="Volunteer" class="volunteer-avatar-small">
+                        <img data-src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80"
+                            alt="Volunteer" class="volunteer-avatar-small lazy">
                     </div>
 
                     <div class="tracking-details">
@@ -123,8 +126,8 @@
                 <div class="tracking-card active-green">
                     <div class="tracking-header">
                         <h3 class="tracking-title">Mixed Vegetables - 12 kg</h3>
-                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80"
-                            alt="Volunteer" class="volunteer-avatar-small">
+                        <img data-src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80"
+                            alt="Volunteer" class="volunteer-avatar-small lazy">
                     </div>
 
                     <div class="tracking-details">
@@ -176,8 +179,8 @@
                 <div class="tracking-card">
                     <div class="tracking-header">
                         <h3 class="tracking-title">Organic Fruits - 15 kg</h3>
-                        <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80"
-                            alt="Volunteer" class="volunteer-avatar-small">
+                        <img data-src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80"
+                            alt="Volunteer" class="volunteer-avatar-small lazy">
                     </div>
 
                     <div class="tracking-details">
@@ -229,24 +232,7 @@
         </main>
     </div>
 
-    <script src="js/auth.js"></script>
-    <script>
-        // Auth.requireAuth();
-
-        function toggleDashboardMenu() {
-            const menu = document.getElementById('dashboardMenu');
-            menu.style.display = menu.style.display === 'none' ? 'block' : 'none';
-        }
-
-        // Close menu when clicking outside
-        document.addEventListener('click', function (event) {
-            const menu = document.getElementById('dashboardMenu');
-            const avatar = document.querySelector('.user-avatar');
-            if (menu && !menu.contains(event.target) && event.target !== avatar) {
-                menu.style.display = 'none';
-            }
-        });
-    </script>
+    <script src="js/main.js"></script>
 </body>
 
 </html>

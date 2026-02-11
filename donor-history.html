@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Donation History - Donor Dashboard</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -201,10 +203,10 @@
                             style="position: absolute; top: -5px; right: -2px; background: #e74c3c; width: 8px; height: 8px; border-radius: 50%;"></span>
                     </div>
                     <div style="position: relative;">
-                        <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80"
-                            alt="User" class="user-avatar" style="border: 2px solid #2ecc71; cursor: pointer;"
-                            onclick="toggleDashboardMenu()">
-                        <div id="dashboardMenu" class="dashboard-switcher" style="display: none;">
+                        <img data-src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80"
+                            alt="User" class="user-avatar lazy" style="border: 2px solid #2ecc71; cursor: pointer;"
+                            onclick="Utils.toggleRoleSwitcher()">
+                        <div id="roleSwitcher" class="dashboard-switcher" style="display: none;">
                             <div class="switcher-header">Switch Dashboard</div>
                             <a href="donor.html" class="switcher-item active">
                                 <i class="fas fa-box-open"></i> Donor Dashboard
@@ -224,7 +226,7 @@
             </header>
 
             <div class="content-area">
-                <div class="history-container">
+                <div class="history-container fade-in">
                     <div class="history-header">
                         <h1>Donation History</h1>
                         <p>A comprehensive record of all donations you have made.</p>
@@ -259,8 +261,8 @@
                                 <td class="date-cell">2026-02-10</td>
                                 <td>
                                     <div class="ngo-cell">
-                                        <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80"
-                                            alt="Hope Foundation" class="ngo-avatar">
+                                        <img data-src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80"
+                                            alt="Hope Foundation" class="ngo-avatar lazy">
                                         <span>Hope Foundation</span>
                                     </div>
                                 </td>
@@ -430,21 +432,8 @@
         </main>
     </div>
 
-    <script>
-        function toggleDashboardMenu() {
-            const menu = document.getElementById('dashboardMenu');
-            menu.style.display = menu.style.display === 'none' ? 'block' : 'none';
-        }
-
-        // Close menu when clicking outside
-        document.addEventListener('click', function (event) {
-            const menu = document.getElementById('dashboardMenu');
-            const avatar = document.querySelector('.user-avatar');
-            if (menu && !menu.contains(event.target) && event.target !== avatar) {
-                menu.style.display = 'none';
-            }
-        });
-    </script>
+    <script src="js/auth.js"></script>
+    <script src="js/main.js"></script>
 </body>
 
 </html>

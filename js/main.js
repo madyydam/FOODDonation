@@ -88,7 +88,7 @@
             window.location.pathname.includes('admin.html');
 
         if (isDashboard && typeof Auth !== 'undefined') {
-            // Auth.requireAuth(); // Uncommented for stability, but careful with logic changes
+            Auth.requireAuth(); // Uncommented for stability, but careful with logic changes
             // For now, keep it as is if it was commented out to avoid breaking local testing
         }
 

@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Impact Calculator - Every Bite Matters</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -173,6 +175,7 @@
             border-radius: 5px;
             background: #edf2f7;
             outline: none;
+            appearance: none;
             -webkit-appearance: none;
         }
 
@@ -358,7 +361,7 @@
 </head>
 
 <body>
-    <div class="page-wrapper">
+    <div class="page-wrapper fade-in">
         <div class="info-side">
             <div class="brand">
                 <i class="fas fa-calculator"></i>
@@ -430,6 +433,8 @@
         </div>
     </div>
 
+    <script src="js/auth.js"></script>
+    <script src="js/main.js"></script>
     <script>
         const slider = document.getElementById('impactSlider');
         const kgVal = document.getElementById('kgValue');

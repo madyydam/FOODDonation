@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pickup Requests - Volunteer Dashboard</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -243,8 +245,8 @@
                 <div class="user-profile">
                     <i class="far fa-bell notification-icon"></i>
                     <a href="volunteer-profile.html">
-                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Arjun&backgroundColor=add8e6"
-                            alt="Arjun Singh" class="user-avatar" style="cursor: pointer;">
+                        <img data-src="https://api.dicebear.com/7.x/avataaars/svg?seed=Arjun&backgroundColor=add8e6"
+                            alt="Arjun Singh" class="user-avatar lazy" style="cursor: pointer;">
                     </a>
                 </div>
             </header>
@@ -252,7 +254,7 @@
             <div class="content-area">
                 <h1 style="margin-bottom: 20px;">Volunteer Pickup Requests</h1>
 
-                <div class="pickup-layout">
+                <div class="pickup-layout fade-in">
                     <!-- Filter Sidebar -->
                     <div class="filter-sidebar">
                         <div class="filter-section">
@@ -337,8 +339,8 @@
                         <!-- Pickup Cards -->
                         <div class="pickup-card">
                             <div class="pickup-header">
-                                <img src="https://images.unsplash.com/photo-1540420773420-3366772f4999?w=200&h=200&fit=crop"
-                                    alt="Vegetables" class="food-image">
+                                <img data-src="https://images.unsplash.com/photo-1540420773420-3366772f4999?w=200&h=200&fit=crop"
+                                    alt="Vegetables" class="food-image lazy">
                                 <div class="pickup-info">
                                     <div class="pickup-title">
                                         Fresh Organic Vegetables
@@ -370,8 +372,8 @@
 
                         <div class="pickup-card">
                             <div class="pickup-header">
-                                <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?w=200&h=200&fit=crop"
-                                    alt="Baked Goods" class="food-image">
+                                <img data-src="https://images.unsplash.com/photo-1509440159596-0249088772ff?w=200&h=200&fit=crop"
+                                    alt="Baked Goods" class="food-image lazy">
                                 <div class="pickup-info">
                                     <div class="pickup-title">
                                         Assorted Baked Goods
@@ -403,8 +405,8 @@
 
                         <div class="pickup-card">
                             <div class="pickup-header">
-                                <img src="https://images.unsplash.com/photo-1455619452474-d2be8b1e70cd?w=200&h=200&fit=crop"
-                                    alt="Prepared Meals" class="food-image">
+                                <img data-src="https://images.unsplash.com/photo-1455619452474-d2be8b1e70cd?w=200&h=200&fit=crop"
+                                    alt="Prepared Meals" class="food-image lazy">
                                 <div class="pickup-info">
                                     <div class="pickup-title">
                                         Prepared Pasta Dishes
@@ -436,8 +438,8 @@
 
                         <div class="pickup-card">
                             <div class="pickup-header">
-                                <img src="https://images.unsplash.com/photo-1519676867240-f03562e64548?w=200&h=200&fit=crop"
-                                    alt="Fruit Baskets" class="food-image">
+                                <img data-src="https://images.unsplash.com/photo-1519676867240-f03562e64548?w=200&h=200&fit=crop"
+                                    alt="Fruit Baskets" class="food-image lazy">
                                 <div class="pickup-info">
                                     <div class="pickup-title">
                                         Mixed Fruit Baskets
@@ -469,8 +471,8 @@
 
                         <div class="pickup-card">
                             <div class="pickup-header">
-                                <img src="https://images.unsplash.com/photo-1628088062854-d1870b4553da?w=200&h=200&fit=crop"
-                                    alt="Dairy Products" class="food-image">
+                                <img data-src="https://images.unsplash.com/photo-1628088062854-d1870b4553da?w=200&h=200&fit=crop"
+                                    alt="Dairy Products" class="food-image lazy">
                                 <div class="pickup-info">
                                     <div class="pickup-title">
                                         Dairy Products
@@ -505,14 +507,18 @@
         </main>
     </div>
 
+    <script src="js/auth.js"></script>
+    <script src="js/main.js"></script>
     <script>
         // Distance slider functionality
         const slider = document.getElementById('distanceSlider');
         const valueDisplay = document.getElementById('distanceValue');
 
-        slider.addEventListener('input', function () {
-            valueDisplay.textContent = this.value;
-        });
+        if (slider && valueDisplay) {
+            slider.addEventListener('input', function () {
+                valueDisplay.textContent = this.value;
+            });
+        }
     </script>
 </body>
 

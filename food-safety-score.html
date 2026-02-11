@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Food Safety Score - Every Bite Matters</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -118,6 +120,7 @@
         }
 
         input[type="range"] {
+            appearance: none;
             -webkit-appearance: none;
             width: 100%;
             height: 6px;
@@ -212,7 +215,7 @@
         <p>AI-powered assessment to ensure your donation is safe for consumption.</p>
     </div>
 
-    <div class="safety-box">
+    <div class="safety-box fade-in">
         <div class="form-group">
             <label><i class="fas fa-utensils"></i> Food Category</label>
             <select id="foodCategory">
@@ -252,6 +255,8 @@
         </div>
     </div>
 
+    <script src="js/auth.js"></script>
+    <script src="js/main.js"></script>
     <script>
         const foodCategory = document.getElementById('foodCategory');
         const storage = document.getElementById('storage');
