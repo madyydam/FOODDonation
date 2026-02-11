@@ -5,31 +5,42 @@
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+    scroll-snap-type: y mandatory;
+    /* Enable snap scrolling */
+}
+
 body {
     font-family: 'Poppins', sans-serif;
-    line-height: 1.6;
+    line-height: 1.4;
     background-color: #f4f4f9;
     color: #333;
+    /* Removed overflow: hidden to allow scrolling */
 }
 
 /* Dashboard Layout */
 .dashboard-container {
     display: flex;
     height: 100vh;
+    overflow: hidden;
 }
 
 .sidebar {
-    width: 250px;
+    width: 240px;
+    /* Slightly narrower */
     background-color: #2c3e50;
     color: #ecf0f1;
     display: flex;
     flex-direction: column;
-    padding: 20px;
+    padding: 15px;
+    /* Reduced padding */
 }
 
 .sidebar h2 {
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
     text-align: center;
+    font-size: 1.2rem;
 }
 
 .sidebar ul {
@@ -37,15 +48,16 @@ body {
 }
 
 .sidebar li {
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
 }
 
 .sidebar a {
     color: #ecf0f1;
     text-decoration: none;
-    font-size: 1.1rem;
+    font-size: 1rem;
     display: block;
-    padding: 10px;
+    padding: 8px 10px;
+    /* Reduced padding */
     border-radius: 4px;
     transition: background 0.3s;
 }
@@ -63,7 +75,8 @@ body {
 
 header {
     background-color: #fff;
-    padding: 1rem 2rem;
+    padding: 0.8rem 1.5rem;
+    /* Reduced padding */
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     display: flex;
     justify-content: space-between;
@@ -71,14 +84,16 @@ header {
 }
 
 header h1 {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     color: #2c3e50;
 }
 
 .content-area {
     flex: 1;
-    padding: 2rem;
+    padding: 1.5rem;
+    /* Reduced padding */
     overflow-y: auto;
+    /* Internal scroll only */
 }
 
 /* Auth Pages Split Layout */
@@ -98,12 +113,13 @@ header h1 {
     align-items: center;
     justify-content: center;
     color: white;
-    padding: 1.5rem;
+    padding: 1rem;
     text-align: center;
 }
 
 .auth-image-side h1 {
-    font-size: 2.2rem;
+    font-size: 2rem;
+    /* Reduced */
     font-weight: bold;
     line-height: 1.2;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
@@ -116,39 +132,48 @@ header h1 {
     justify-content: center;
     align-items: center;
     background-color: #fff;
-    padding: 1.5rem;
+    padding: 1rem;
+    /* Reduced */
 }
 
 .auth-box {
     width: 100%;
-    max-width: 350px;
+    max-width: 320px;
+    /* Reduced max-width */
     text-align: center;
     box-shadow: none;
     padding: 0;
 }
 
 .auth-box h2 {
-    font-size: 1.8rem;
+    font-size: 1.5rem;
+    /* Reduced */
     color: #333;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.3rem;
+    /* Reduced */
 }
 
 .auth-subtext {
     color: #7f8c8d;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
+    /* Reduced */
+    font-size: 0.9rem;
 }
 
 .input-group {
     position: relative;
-    margin-bottom: 1.2rem;
+    margin-bottom: 0.8rem;
+    /* Reduced */
 }
 
 .input-group input {
     width: 100%;
-    padding: 10px 15px 10px 35px;
+    padding: 8px 12px 8px 32px;
+    /* Compact padding */
     border: 1px solid #ddd;
-    border-radius: 8px;
-    font-size: 0.95rem;
+    border-radius: 6px;
+    /* Smaller radius */
+    font-size: 0.9rem;
     outline: none;
     transition: border-color 0.3s;
 }
@@ -159,11 +184,11 @@ header h1 {
 
 .input-icon {
     position: absolute;
-    left: 12px;
+    left: 10px;
     top: 50%;
     transform: translateY(-50%);
     color: #95a5a6;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
 }
 
 .forgot-password {
@@ -171,22 +196,23 @@ header h1 {
     text-align: right;
     color: #2ecc71;
     text-decoration: none;
-    margin-bottom: 1.2rem;
-    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    font-size: 0.85rem;
 }
 
 .btn-primary {
     width: 100%;
-    padding: 10px;
+    padding: 8px;
+    /* Reduced */
     background-color: #2ecc71;
     color: white;
     border: none;
-    border-radius: 8px;
-    font-size: 1rem;
+    border-radius: 6px;
+    font-size: 0.95rem;
     font-weight: bold;
     cursor: pointer;
     transition: background 0.3s;
-    margin-bottom: 1rem;
+    margin-bottom: 0.8rem;
 }
 
 .btn-primary:hover {
@@ -194,11 +220,11 @@ header h1 {
 }
 
 .auth-footer-links {
-    margin-top: 2rem;
+    margin-top: 1.5rem;
     display: flex;
     justify-content: center;
-    gap: 20px;
-    font-size: 0.9rem;
+    gap: 15px;
+    font-size: 0.85rem;
 }
 
 .auth-footer-links a {
@@ -207,46 +233,52 @@ header h1 {
 }
 
 .auth-stats {
-    margin-top: 2rem;
+    margin-top: 1.5rem;
     display: flex;
     justify-content: center;
-    gap: 30px;
+    gap: 20px;
     color: #7f8c8d;
-    font-size: 0.85rem;
+    font-size: 0.8rem;
 }
 
 /* Signup Page Specifics */
 .signup-card {
     background: #fff;
-    border-radius: 12px;
-    padding: 3rem;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    border-radius: 10px;
+    padding: 2rem;
+    /* Reduced from 3rem */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
     width: 100%;
-    max-width: 500px;
+    max-width: 450px;
+    /* Reduced */
     text-align: center;
 }
 
 .signup-card h1 {
-    font-size: 1.8rem;
+    font-size: 1.5rem;
+    /* Reduced */
     color: #2c3e50;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.3rem;
 }
 
 .signup-card .role-subtitle {
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
+    /* Reduced */
+    font-size: 0.9rem;
 }
 
 .signup-card .input-group {
     text-align: left;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
+    /* Reduced */
 }
 
 .signup-card label {
     display: block;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     font-weight: 500;
     color: #333;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.3rem;
 }
 
 .signup-card .input-wrapper {
@@ -255,10 +287,11 @@ header h1 {
 
 .signup-card input {
     width: 100%;
-    padding: 12px 15px 12px 40px;
+    padding: 10px 12px 10px 35px;
+    /* Compact */
     border: 1px solid #e0e0e0;
-    border-radius: 8px;
-    font-size: 1rem;
+    border-radius: 6px;
+    font-size: 0.9rem;
     outline: none;
     transition: border-color 0.3s;
 }
@@ -270,16 +303,16 @@ header h1 {
 .checkbox-group {
     display: flex;
     align-items: flex-start;
-    gap: 10px;
-    margin-bottom: 2rem;
+    gap: 8px;
+    margin-bottom: 1.5rem;
     text-align: left;
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     color: #555;
 }
 
 .checkbox-group input {
     width: auto;
-    margin-top: 3px;
+    margin-top: 2px;
 }
 
 .checkbox-group a {
@@ -288,11 +321,11 @@ header h1 {
 }
 
 .signup-footer-links {
-    margin-top: 2rem;
+    margin-top: 1.5rem;
     display: flex;
     justify-content: center;
-    gap: 20px;
-    font-size: 0.85rem;
+    gap: 15px;
+    font-size: 0.8rem;
 }
 
 .signup-footer-links a {
@@ -304,8 +337,11 @@ header h1 {
 .role-selection-container {
     max-width: 1000px;
     margin: 0 auto;
-    padding: 2rem;
-    min-height: 100vh;
+    padding: 1rem;
+    height: 100vh;
+    /* Enforced height */
+    overflow: hidden;
+    /* No scroll */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -314,91 +350,115 @@ header h1 {
 
 .progress-container {
     width: 100%;
-    max-width: 400px;
+    max-width: 300px;
+    /* Smaller */
     text-align: center;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
+    /* Reduced */
 }
 
 .step-text {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     color: #7f8c8d;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.3rem;
     display: block;
 }
 
 .progress-bar {
     width: 100%;
-    height: 6px;
+    height: 4px;
+    /* Thinner */
     background-color: #ecf0f1;
-    border-radius: 3px;
+    border-radius: 2px;
     overflow: hidden;
 }
 
 .progress-fill {
     height: 100%;
     background-color: #2ecc71;
-    border-radius: 3px;
+    border-radius: 2px;
 }
 
 .role-selection-container h1 {
-    font-size: 2.5rem;
+    font-size: 1.8rem;
+    /* Reduced */
     color: #2c3e50;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.2rem;
     text-align: center;
 }
 
 .role-subtitle {
     color: #7f8c8d;
-    margin-bottom: 3rem;
+    margin-bottom: 1.5rem;
+    /* Reduced drastically */
     text-align: center;
+    font-size: 0.9rem;
 }
 
 .role-grid {
     display: grid;
+    /* Force 2 columns for tablets and up */
     grid-template-columns: repeat(2, 1fr);
-    gap: 2rem;
+    gap: 1rem;
+    /* Tighter gap */
     width: 100%;
+    max-width: 800px;
 }
 
 .role-card {
     background: #fff;
-    border-radius: 12px;
-    padding: 2rem;
+    border-radius: 10px;
+    padding: 1rem;
+    /* Very compact */
     text-align: center;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
     cursor: pointer;
-    transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+    transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
     border: 2px solid transparent;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 1.4;
+    /* Enforce square-ish shape */
 }
 
 .role-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
     border-color: #2ecc71;
 }
 
 .role-icon {
-    font-size: 2.5rem;
+    font-size: 1.8rem;
+    /* Smaller icon */
     color: #2ecc71;
-    margin-bottom: 1.5rem;
+    margin-bottom: 0.5rem;
 }
 
 .role-card h3 {
-    font-size: 1.5rem;
+    font-size: 1.1rem;
+    /* Smaller title */
     color: #2c3e50;
-    margin-bottom: 1rem;
+    margin-bottom: 0.3rem;
 }
 
 .role-card p {
     color: #7f8c8d;
-    font-size: 0.95rem;
-    line-height: 1.5;
+    font-size: 0.8rem;
+    /* Smaller text */
+    line-height: 1.3;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    /* Limit text lines */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 
-@media (min-width: 992px) {
+@media (max-width: 768px) {
     .role-grid {
-        grid-template-columns: repeat(2, 1fr);
-        max-width: 800px;
+        grid-template-columns: 1fr;
+        /* Stack on mobile */
     }
 }
 
@@ -458,13 +518,16 @@ header h1 {
     background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1488459716781-31db52582fe9?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
     background-size: cover;
     background-position: center;
-    height: 80vh;
+    height: 100vh;
+    /* Full viewport height */
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
     color: white;
     padding: 0 2rem;
+    scroll-snap-align: start;
+    /* Snap to this section */
 }
 
 .hero-content {
@@ -488,15 +551,21 @@ header h1 {
     display: flex;
     gap: 1rem;
     justify-content: center;
+    flex-direction: row;
+    /* Ensure side-by-side */
 }
 
 .btn-hero {
-    padding: 12px 30px;
-    font-size: 1.1rem;
+    padding: 10px 24px;
+    /* Reduced padding (chhote buttons) */
+    font-size: 1rem;
+    /* Reduced font size */
     border-radius: 30px;
     text-decoration: none;
     font-weight: 600;
     transition: transform 0.3s, box-shadow 0.3s;
+    white-space: nowrap;
+    /* Prevent text wrapping */
 }
 
 .btn-hero.primary {
@@ -516,9 +585,16 @@ header h1 {
 
 /* Features Section */
 .features-section {
-    padding: 5rem 2rem;
+    padding: 0 2rem;
     background-color: #fff;
     text-align: center;
+    min-height: 100vh;
+    /* Full viewport height */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    scroll-snap-align: start;
+    /* Snap to this section */
 }
 
 .section-title {
@@ -562,8 +638,15 @@ header h1 {
 .stats-section {
     background-color: #2c3e50;
     color: white;
-    padding: 4rem 2rem;
+    padding: 0 2rem;
     text-align: center;
+    min-height: 100vh;
+    /* Full viewport height */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    scroll-snap-align: start;
+    /* Snap to this section */
 }
 
 .stats-grid {
