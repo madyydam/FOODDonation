@@ -40,10 +40,13 @@
                 </div>
                 <div class="user-profile">
                     <i class="far fa-bell notification-icon"></i>
-                    <div style="position: relative;">
-                        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80"
-                            alt="NGO User" class="user-avatar" style="cursor: pointer;" onclick="toggleDashboardMenu()">
-                        <div id="dashboardMenu" class="dashboard-switcher" style="display: none;">
+                    <!-- Role Switcher Dropdown -->
+                    <div style="position: relative; margin-right: 15px;">
+                        <button onclick="toggleRoleSwitcher()"
+                            style="background: #e74c3c; color: white; border: none; padding: 8px 15px; border-radius: 8px; cursor: pointer; font-size: 0.9rem; font-weight: 500; display: flex; align-items: center; gap: 5px;">
+                            <i class="fas fa-random"></i> Switch Role
+                        </button>
+                        <div id="roleSwitcher" class="dashboard-switcher" style="display: none;">
                             <div class="switcher-header">Switch Dashboard</div>
                             <a href="donor.html" class="switcher-item">
                                 <i class="fas fa-box-open"></i> Donor Dashboard
@@ -52,13 +55,17 @@
                                 <i class="fas fa-hand-holding-heart"></i> NGO Dashboard
                             </a>
                             <a href="volunteer.html" class="switcher-item">
-                                <i class="fas fa-car"></i> Volunteer Dashboard
+                                <i class="fas fa-bicycle"></i> Volunteer Dashboard
                             </a>
                             <a href="admin.html" class="switcher-item">
                                 <i class="fas fa-cog"></i> Admin Dashboard
                             </a>
                         </div>
                     </div>
+                    <a href="ngo-profile.html">
+                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Priya&backgroundColor=ffb6c1"
+                            alt="Priya Patel" class="user-avatar" style="cursor: pointer;">
+                    </a>
                 </div>
             </header>
 
@@ -236,16 +243,16 @@
     <script>
         // Auth.requireAuth();
 
-        function toggleDashboardMenu() {
-            const menu = document.getElementById('dashboardMenu');
+        function toggleRoleSwitcher() {
+            const menu = document.getElementById('roleSwitcher');
             menu.style.display = menu.style.display === 'none' ? 'block' : 'none';
         }
 
         // Close menu when clicking outside
         document.addEventListener('click', function (event) {
-            const menu = document.getElementById('dashboardMenu');
-            const avatar = document.querySelector('.user-avatar');
-            if (menu && !menu.contains(event.target) && event.target !== avatar) {
+            const menu = document.getElementById('roleSwitcher');
+            const button = event.target.closest('button[onclick="toggleRoleSwitcher()"]');
+            if (!button && menu && !menu.contains(event.target)) {
                 menu.style.display = 'none';
             }
         });

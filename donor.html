@@ -48,6 +48,28 @@
                         <span
                             style="position: absolute; top: -5px; right: -2px; background: #e74c3c; width: 8px; height: 8px; border-radius: 50%;"></span>
                     </div>
+                    <!-- Role Switcher Dropdown -->
+                    <div style="position: relative; margin-right: 15px;">
+                        <button onclick="toggleRoleSwitcher()"
+                            style="background: #2ecc71; color: white; border: none; padding: 8px 15px; border-radius: 8px; cursor: pointer; font-size: 0.9rem; font-weight: 500; display: flex; align-items: center; gap: 5px;">
+                            <i class="fas fa-random"></i> Switch Role
+                        </button>
+                        <div id="roleSwitcher" class="dashboard-switcher" style="display: none;">
+                            <div class="switcher-header">Switch Dashboard</div>
+                            <a href="donor.html" class="switcher-item active">
+                                <i class="fas fa-box-open"></i> Donor Dashboard
+                            </a>
+                            <a href="ngo.html" class="switcher-item">
+                                <i class="fas fa-hand-holding-heart"></i> NGO Dashboard
+                            </a>
+                            <a href="volunteer.html" class="switcher-item">
+                                <i class="fas fa-bicycle"></i> Volunteer Dashboard
+                            </a>
+                            <a href="admin.html" class="switcher-item">
+                                <i class="fas fa-cog"></i> Admin Dashboard
+                            </a>
+                        </div>
+                    </div>
                     <a href="donor-profile.html">
                         <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Rahul&backgroundColor=2ecc71"
                             alt="Rahul Sharma" class="user-avatar" style="border: 2px solid #2ecc71; cursor: pointer;">
@@ -220,6 +242,22 @@
         </main>
     </div>
 
+    <script>
+        function toggleRoleSwitcher() {
+            const menu = document.getElementById('roleSwitcher');
+            menu.style.display = menu.style.display === 'none' ? 'block' : 'none';
+        }
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function (event) {
+            const menu = document.getElementById('roleSwitcher');
+            const button = event.target.closest('button[onclick="toggleRoleSwitcher()"]');
+
+            if (!button && menu && !menu.contains(event.target)) {
+                menu.style.display = 'none';
+            }
+        });
+    </script>
 </body>
 
 </html>

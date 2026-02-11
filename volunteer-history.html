@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Completed Tasks - Volunteer Dashboard</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .history-layout {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 20px;
+        }
+
+        .deliveries-section,
+        .badges-section {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .section-title {
+            font-size: 1.3rem;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .deliveries-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .deliveries-table thead {
+            background: #f8f9fa;
+        }
+
+        .deliveries-table th {
+            padding: 12px;
+            text-align: left;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #555;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .deliveries-table td {
+            padding: 15px 12px;
+            border-bottom: 1px solid #f0f0f0;
+            font-size: 0.9rem;
+            color: #2c3e50;
+        }
+
+        .deliveries-table tr:hover {
+            background: #f8f9fa;
+        }
+
+        .rating-stars {
+            color: #f59e0b;
+        }
+
+        .rating-stars i {
+            margin-right: 2px;
+        }
+
+        .badges-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .badge-card {
+            text-align: center;
+            padding: 20px;
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+            border-radius: 12px;
+            border: 2px solid #86efac;
+        }
+
+        .badge-icon {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+
+        .badge-name {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        .leaderboard-section {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+            border: 2px solid #fbbf24;
+        }
+
+        .leaderboard-icon {
+            font-size: 4rem;
+            color: #d97706;
+            margin-bottom: 15px;
+        }
+
+        .leaderboard-text {
+            font-size: 1rem;
+            color: #78350f;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        .leaderboard-btn {
+            padding: 12px 30px;
+            background: #2ecc71;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .leaderboard-btn:hover {
+            background: #27ae60;
+        }
+
+        @media (max-width: 768px) {
+            .history-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .deliveries-table {
+                font-size: 0.8rem;
+            }
+
+            .deliveries-table th,
+            .deliveries-table td {
+                padding: 8px 6px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <i class="fas fa-bicycle"></i> Volunteer
+            </div>
+            <ul class="sidebar-menu">
+                <li><a href="volunteer-pickups.html"><i class="fas fa-tasks"></i> Pickup Requests</a></li>
+                <li><a href="volunteer.html"><i class="fas fa-truck"></i> Active Delivery</a></li>
+                <li><a href="volunteer-history.html" class="active"><i class="fas fa-history"></i> Completed Tasks</a>
+                </li>
+                <li><a href="volunteer-profile.html"><i class="fas fa-user"></i> Profile</a></li>
+            </ul>
+            <div class="sidebar-footer">
+                <p>&copy; 2026 From Surplus to Smiles.</p>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="dashboard-header">
+                <div class="brand">
+                    <i class="fas fa-leaf"></i> From Surplus to Smiles
+                </div>
+                <div class="user-profile">
+                    <i class="far fa-bell notification-icon"></i>
+                    <a href="volunteer-profile.html">
+                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Arjun&backgroundColor=add8e6"
+                            alt="Arjun Singh" class="user-avatar" style="cursor: pointer;">
+                    </a>
+                </div>
+            </header>
+
+            <div class="content-area">
+                <h1 style="margin-bottom: 20px;">Volunteer History</h1>
+
+                <div class="history-layout">
+                    <!-- Completed Deliveries Section -->
+                    <div class="deliveries-section">
+                        <h2 class="section-title">Completed Deliveries</h2>
+                        <table class="deliveries-table">
+                            <thead>
+                                <tr>
+                                    <th>DATE</th>
+                                    <th>NGO NAME</th>
+                                    <th>RATING</th>
+                                    <th>DISTANCE</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>2023-11-20</td>
+                                    <td>Hope Haven Charity</td>
+                                    <td>
+                                        <div class="rating-stars">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </div>
+                                    </td>
+                                    <td>12.5 km</td>
+                                </tr>
+                                <tr>
+                                    <td>2023-11-18</td>
+                                    <td>Community Kitchen</td>
+                                    <td>
+                                        <div class="rating-stars">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                        </div>
+                                    </td>
+                                    <td>8.2 km</td>
+                                </tr>
+                                <tr>
+                                    <td>2023-11-15</td>
+                                    <td>Food for All</td>
+                                    <td>
+                                        <div class="rating-stars">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </div>
+                                    </td>
+                                    <td>5.1 km</td>
+                                </tr>
+                                <tr>
+                                    <td>2023-11-12</td>
+                                    <td>Local Food Bank</td>
+                                    <td>
+                                        <div class="rating-stars">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                        </div>
+                                    </td>
+                                    <td>15.9 km</td>
+                                </tr>
+                                <tr>
+                                    <td>2023-11-09</td>
+                                    <td>Street Outreach</td>
+                                    <td>
+                                        <div class="rating-stars">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </div>
+                                    </td>
+                                    <td>9.3 km</td>
+                                </tr>
+                                <tr>
+                                    <td>2023-11-05</td>
+                                    <td>Senior Support</td>
+                                    <td>
+                                        <div class="rating-stars">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                        </div>
+                                    </td>
+                                    <td>7.0 km</td>
+                                </tr>
+                                <tr>
+                                    <td>2023-11-03</td>
+                                    <td>Annapurna Foundation</td>
+                                    <td>
+                                        <div class="rating-stars">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </div>
+                                    </td>
+                                    <td>6.8 km</td>
+                                </tr>
+                                <tr>
+                                    <td>2023-10-28</td>
+                                    <td>Helping Hands Trust</td>
+                                    <td>
+                                        <div class="rating-stars">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                        </div>
+                                    </td>
+                                    <td>11.3 km</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Badges and Leaderboard Section -->
+                    <div>
+                        <div class="badges-section">
+                            <h2 class="section-title">Earned Badges</h2>
+                            <div class="badges-grid">
+                                <div class="badge-card">
+                                    <div class="badge-icon">🏆</div>
+                                    <div class="badge-name">First Mile</div>
+                                </div>
+                                <div class="badge-card">
+                                    <div class="badge-icon">⭐</div>
+                                    <div class="badge-name">Top Rated</div>
+                                </div>
+                                <div class="badge-card">
+                                    <div class="badge-icon">🌿</div>
+                                    <div class="badge-name">Eco Warrior</div>
+                                </div>
+                                <div class="badge-card">
+                                    <div class="badge-icon">😊</div>
+                                    <div class="badge-name">Community Hero</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="leaderboard-section">
+                            <div class="leaderboard-icon">🏆</div>
+                            <h3 style="font-size: 1.3rem; color: #78350f; margin-bottom: 10px;">
+                                Join the Leaderboard!
+                            </h3>
+                            <p class="leaderboard-text">
+                                See how your contributions stack up against other volunteers. Climb the ranks and earn
+                                recognition!
+                            </p>
+                            <button class="leaderboard-btn">View Leaderboard</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+
+</html>

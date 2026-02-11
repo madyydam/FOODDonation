@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pickup Requests - Volunteer Dashboard</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .pickup-layout {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 20px;
+            height: calc(100vh - 80px);
+        }
+
+        .filter-sidebar {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            overflow-y: auto;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .filter-section {
+            margin-bottom: 25px;
+        }
+
+        .filter-section h3 {
+            font-size: 0.9rem;
+            color: #2c3e50;
+            margin-bottom: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .search-box {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        .filter-checkbox {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .filter-checkbox input {
+            margin-right: 8px;
+        }
+
+        .filter-checkbox label {
+            font-size: 0.9rem;
+            color: #555;
+        }
+
+        .distance-slider {
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        .distance-value {
+            text-align: right;
+            font-size: 0.85rem;
+            color: #2ecc71;
+            margin-top: 5px;
+        }
+
+        .requests-area {
+            overflow-y: auto;
+        }
+
+        .map-container {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .map-placeholder {
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #2ecc71;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .pickup-card {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            border: 1px solid #f0f0f0;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .pickup-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 16px rgba(46, 204, 113, 0.15);
+        }
+
+        .pickup-header {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .food-image {
+            width: 80px;
+            height: 80px;
+            border-radius: 8px;
+            object-fit: cover;
+        }
+
+        .pickup-info {
+            flex: 1;
+        }
+
+        .pickup-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+
+        .pickup-meta {
+            font-size: 0.85rem;
+            color: #7f8c8d;
+        }
+
+        .urgency-badge {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-left: 8px;
+        }
+
+        .urgency-high {
+            background: #fee2e2;
+            color: #dc2626;
+        }
+
+        .urgency-medium {
+            background: #fef3c7;
+            color: #d97706;
+        }
+
+        .urgency-low {
+            background: #dbeafe;
+            color: #2563eb;
+        }
+
+        .pickup-details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .detail-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            font-size: 0.9rem;
+            color: #555;
+        }
+
+        .detail-item i {
+            color: #2ecc71;
+            margin-top: 3px;
+        }
+
+        .accept-btn {
+            width: 100%;
+            padding: 12px;
+            background: #2ecc71;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .accept-btn:hover {
+            background: #27ae60;
+        }
+
+        @media (max-width: 768px) {
+            .pickup-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .filter-sidebar {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <i class="fas fa-bicycle"></i> Volunteer
+            </div>
+            <ul class="sidebar-menu">
+                <li><a href="volunteer-pickups.html" class="active"><i class="fas fa-tasks"></i> Pickup Requests</a>
+                </li>
+                <li><a href="volunteer.html"><i class="fas fa-truck"></i> Active Delivery</a></li>
+                <li><a href="volunteer-history.html"><i class="fas fa-history"></i> Completed Tasks</a></li>
+                <li><a href="volunteer-profile.html"><i class="fas fa-user"></i> Profile</a></li>
+            </ul>
+            <div class="sidebar-footer">
+                <p>&copy; 2026 From Surplus to Smiles.</p>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="dashboard-header">
+                <div class="brand">
+                    <i class="fas fa-leaf"></i> From Surplus to Smiles
+                </div>
+                <div class="user-profile">
+                    <i class="far fa-bell notification-icon"></i>
+                    <a href="volunteer-profile.html">
+                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Arjun&backgroundColor=add8e6"
+                            alt="Arjun Singh" class="user-avatar" style="cursor: pointer;">
+                    </a>
+                </div>
+            </header>
+
+            <div class="content-area">
+                <h1 style="margin-bottom: 20px;">Volunteer Pickup Requests</h1>
+
+                <div class="pickup-layout">
+                    <!-- Filter Sidebar -->
+                    <div class="filter-sidebar">
+                        <div class="filter-section">
+                            <h3>Filter Requests</h3>
+                            <input type="text" class="search-box" placeholder="Search by food type or location...">
+                        </div>
+
+                        <div class="filter-section">
+                            <h3>Sort By</h3>
+                            <select class="search-box">
+                                <option>Distance (Nearest)</option>
+                                <option>Urgency (High)</option>
+                                <option>Quantity (Most)</option>
+                                <option>Time Posted</option>
+                            </select>
+                        </div>
+
+                        <div class="filter-section">
+                            <h3>Food Type</h3>
+                            <div class="filter-checkbox">
+                                <input type="checkbox" id="fresh">
+                                <label for="fresh">Fresh Produce</label>
+                            </div>
+                            <div class="filter-checkbox">
+                                <input type="checkbox" id="baked">
+                                <label for="baked">Baked Goods</label>
+                            </div>
+                            <div class="filter-checkbox">
+                                <input type="checkbox" id="prepared">
+                                <label for="prepared">Prepared Meals</label>
+                            </div>
+                            <div class="filter-checkbox">
+                                <input type="checkbox" id="dairy">
+                                <label for="dairy">Dairy Products</label>
+                            </div>
+                            <div class="filter-checkbox">
+                                <input type="checkbox" id="canned">
+                                <label for="canned">Canned Goods</label>
+                            </div>
+                        </div>
+
+                        <div class="filter-section">
+                            <h3>Max Distance</h3>
+                            <input type="range" class="distance-slider" min="1" max="50" value="20" id="distanceSlider">
+                            <div class="distance-value"><span id="distanceValue">20</span> km</div>
+                        </div>
+
+                        <div class="filter-section">
+                            <h3>Urgency</h3>
+                            <div class="filter-checkbox">
+                                <input type="checkbox" id="immediate">
+                                <label for="immediate">Immediate</label>
+                            </div>
+                            <div class="filter-checkbox">
+                                <input type="checkbox" id="today">
+                                <label for="today">Today</label>
+                            </div>
+                            <div class="filter-checkbox">
+                                <input type="checkbox" id="within24">
+                                <label for="within24">Within 24h</label>
+                            </div>
+                            <div class="filter-checkbox">
+                                <input type="checkbox" id="any">
+                                <label for="any">Any</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Requests Area -->
+                    <div class="requests-area">
+                        <!-- Map Section -->
+                        <div class="map-container">
+                            <h2 style="margin-bottom: 15px;">Requests Near You</h2>
+                            <div class="map-placeholder">
+                                <i class="fas fa-map-marked-alt" style="font-size: 3rem;"></i>
+                            </div>
+                            <p style="text-align: center; margin-top: 10px; color: #7f8c8d; font-size: 0.9rem;">
+                                <i class="fas fa-location-arrow"></i> View Full Map
+                            </p>
+                        </div>
+
+                        <!-- Pickup Cards -->
+                        <div class="pickup-card">
+                            <div class="pickup-header">
+                                <img src="https://images.unsplash.com/photo-1540420773420-3366772f4999?w=200&h=200&fit=crop"
+                                    alt="Vegetables" class="food-image">
+                                <div class="pickup-info">
+                                    <div class="pickup-title">
+                                        Fresh Organic Vegetables
+                                        <span class="urgency-badge urgency-high">Urgency: High</span>
+                                    </div>
+                                    <div class="pickup-meta">Approx. 30 kg • Urgency: High</div>
+                                </div>
+                            </div>
+                            <div class="pickup-details">
+                                <div class="detail-item">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <span>123 Green Farm Rd, Countryside</span>
+                                </div>
+                                <div class="detail-item">
+                                    <i class="fas fa-building"></i>
+                                    <span>456 Community Center, City Central</span>
+                                </div>
+                                <div class="detail-item">
+                                    <i class="fas fa-clock"></i>
+                                    <span>Tomorrow, 3:00 PM - 5:00 PM</span>
+                                </div>
+                                <div class="detail-item">
+                                    <i class="fas fa-road"></i>
+                                    <span>5.5 km</span>
+                                </div>
+                            </div>
+                            <button class="accept-btn">Accept Task</button>
+                        </div>
+
+                        <div class="pickup-card">
+                            <div class="pickup-header">
+                                <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?w=200&h=200&fit=crop"
+                                    alt="Baked Goods" class="food-image">
+                                <div class="pickup-info">
+                                    <div class="pickup-title">
+                                        Assorted Baked Goods
+                                        <span class="urgency-badge urgency-medium">Urgency: Medium</span>
+                                    </div>
+                                    <div class="pickup-meta">Approx. 50 items • Urgency: Medium</div>
+                                </div>
+                            </div>
+                            <div class="pickup-details">
+                                <div class="detail-item">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <span>789 Grand Bakery, Downtown</span>
+                                </div>
+                                <div class="detail-item">
+                                    <i class="fas fa-building"></i>
+                                    <span>101 Shelter Drive, East Side</span>
+                                </div>
+                                <div class="detail-item">
+                                    <i class="fas fa-clock"></i>
+                                    <span>Tomorrow, 7:00 PM - 9:00 PM</span>
+                                </div>
+                                <div class="detail-item">
+                                    <i class="fas fa-road"></i>
+                                    <span>2.1 km</span>
+                                </div>
+                            </div>
+                            <button class="accept-btn">Accept Task</button>
+                        </div>
+
+                        <div class="pickup-card">
+                            <div class="pickup-header">
+                                <img src="https://images.unsplash.com/photo-1455619452474-d2be8b1e70cd?w=200&h=200&fit=crop"
+                                    alt="Prepared Meals" class="food-image">
+                                <div class="pickup-info">
+                                    <div class="pickup-title">
+                                        Prepared Pasta Dishes
+                                        <span class="urgency-badge urgency-low">Urgency: Low</span>
+                                    </div>
+                                    <div class="pickup-meta">Serves 30 people • Urgency: Low</div>
+                                </div>
+                            </div>
+                            <div class="pickup-details">
+                                <div class="detail-item">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <span>222 Italian Kitchen, West End</span>
+                                </div>
+                                <div class="detail-item">
+                                    <i class="fas fa-building"></i>
+                                    <span>333 Family Shelter, Northbound</span>
+                                </div>
+                                <div class="detail-item">
+                                    <i class="fas fa-clock"></i>
+                                    <span>Tomorrow, 11:00 AM - 12:00 PM</span>
+                                </div>
+                                <div class="detail-item">
+                                    <i class="fas fa-road"></i>
+                                    <span>4.4 km</span>
+                                </div>
+                            </div>
+                            <button class="accept-btn">Accept Task</button>
+                        </div>
+
+                        <div class="pickup-card">
+                            <div class="pickup-header">
+                                <img src="https://images.unsplash.com/photo-1519676867240-f03562e64548?w=200&h=200&fit=crop"
+                                    alt="Fruit Baskets" class="food-image">
+                                <div class="pickup-info">
+                                    <div class="pickup-title">
+                                        Mixed Fruit Baskets
+                                        <span class="urgency-badge urgency-high">Urgency: High</span>
+                                    </div>
+                                    <div class="pickup-meta">15 baskets • Urgency: High</div>
+                                </div>
+                            </div>
+                            <div class="pickup-details">
+                                <div class="detail-item">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <span>444 Fruit Market, Havendale</span>
+                                </div>
+                                <div class="detail-item">
+                                    <i class="fas fa-building"></i>
+                                    <span>555 Senior Residence, Uptown</span>
+                                </div>
+                                <div class="detail-item">
+                                    <i class="fas fa-clock"></i>
+                                    <span>Today, 7:00 PM - 2:00 PM</span>
+                                </div>
+                                <div class="detail-item">
+                                    <i class="fas fa-road"></i>
+                                    <span>3.9 km</span>
+                                </div>
+                            </div>
+                            <button class="accept-btn">Accept Task</button>
+                        </div>
+
+                        <div class="pickup-card">
+                            <div class="pickup-header">
+                                <img src="https://images.unsplash.com/photo-1628088062854-d1870b4553da?w=200&h=200&fit=crop"
+                                    alt="Dairy Products" class="food-image">
+                                <div class="pickup-info">
+                                    <div class="pickup-title">
+                                        Dairy Products
+                                        <span class="urgency-badge urgency-medium">Urgency: Medium</span>
+                                    </div>
+                                    <div class="pickup-meta">Various milk, yogurt, cheese • Urgency: Medium</div>
+                                </div>
+                            </div>
+                            <div class="pickup-details">
+                                <div class="detail-item">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <span>666 Dairy Farm, Farmland</span>
+                                </div>
+                                <div class="detail-item">
+                                    <i class="fas fa-building"></i>
+                                    <span>777 Food Bank Warehouse, Industrial Zone</span>
+                                </div>
+                                <div class="detail-item">
+                                    <i class="fas fa-clock"></i>
+                                    <span>Tomorrow, 9:00 AM - 10:00 AM</span>
+                                </div>
+                                <div class="detail-item">
+                                    <i class="fas fa-road"></i>
+                                    <span>7.2 km</span>
+                                </div>
+                            </div>
+                            <button class="accept-btn">Accept Task</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Distance slider functionality
+        const slider = document.getElementById('distanceSlider');
+        const valueDisplay = document.getElementById('distanceValue');
+
+        slider.addEventListener('input', function () {
+            valueDisplay.textContent = this.value;
+        });
+    </script>
+</body>
+
+</html>
