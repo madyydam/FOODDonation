@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Demand Insights - Every Bite Matters</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            background: #f8f9fa;
+            padding-bottom: 3rem;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 3rem 5%;
+            color: white;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            opacity: 0.95;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: -2rem auto 0;
+            padding: 0 2rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-value.critical {
+            color: #e74c3c;
+        }
+
+        .stat-value.high {
+            color: #f39c12;
+        }
+
+        .stat-value.total {
+            color: #3498db;
+        }
+
+        .stat-label {
+            color: #7f8c8d;
+        }
+
+        .demand-section {
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+        }
+
+        .area-card {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            border-left: 6px solid;
+        }
+
+        .area-card.critical {
+            border-left-color: #e74c3c;
+            background: #fadbd8;
+        }
+
+        .area-card.high {
+            border-left-color: #f39c12;
+            background: #fef5e7;
+        }
+
+        .area-card.medium {
+            border-left-color: #3498db;
+            background: #ebf5fb;
+        }
+
+        .area-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+        }
+
+        .area-name {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #2c3e50;
+        }
+
+        .area-badge {
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .area-badge.critical {
+            background: #e74c3c;
+            color: white;
+        }
+
+        .area-badge.high {
+            background: #f39c12;
+            color: white;
+        }
+
+        .area-badge.medium {
+            background: #3498db;
+            color: white;
+        }
+
+        .area-message {
+            color: #555;
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .progress-bar-container {
+            background: #ecf0f1;
+            height: 12px;
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .progress-bar {
+            height: 100%;
+            border-radius: 10px;
+            transition: width 0.3s;
+        }
+
+        .progress-bar.critical {
+            background: #e74c3c;
+        }
+
+        .progress-bar.high {
+            background: #f39c12;
+        }
+
+        .progress-bar.medium {
+            background: #3498db;
+        }
+
+        .request-count {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: #2c3e50;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="hero">
+        <h1><i class="fas fa-chart-bar"></i> AI Demand Insights</h1>
+        <p>Real-time demand prediction based on NGO request patterns and location frequency analysis.</p>
+    </div>
+
+    <div class="container">
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-value critical">2</div>
+                <div class="stat-label">Critical Areas</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value high">2</div>
+                <div class="stat-label">High Demand</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value total">95</div>
+                <div class="stat-label">Total Requests</div>
+            </div>
+        </div>
+
+        <div class="demand-section">
+            <h2 class="section-title">Area-wise Demand Analysis</h2>
+
+            <div class="area-card critical">
+                <div class="area-header">
+                    <div class="area-name">Thane</div>
+                    <span class="area-badge critical">CRITICAL</span>
+                </div>
+                <div class="area-message">
+                    <i class="fas fa-exclamation-circle" style="color: #e74c3c;"></i>
+                    Thane needs urgent food supply — 35 requests today
+                </div>
+                <div class="progress-bar-container">
+                    <div class="progress-bar critical" style="width: 90%;"></div>
+                    <span class="request-count">📈 35 requests</span>
+                </div>
+            </div>
+
+            <div class="area-card critical">
+                <div class="area-header">
+                    <div class="area-name">South Mumbai</div>
+                    <span class="area-badge critical">CRITICAL</span>
+                </div>
+                <div class="area-message">
+                    <i class="fas fa-exclamation-circle" style="color: #e74c3c;"></i>
+                    South Mumbai needs urgent food supply — 18 requests today
+                </div>
+                <div class="progress-bar-container">
+                    <div class="progress-bar critical" style="width: 75%;"></div>
+                    <span class="request-count">📈 18 requests</span>
+                </div>
+            </div>
+
+            <div class="area-card high">
+                <div class="area-header">
+                    <div class="area-name">Powai</div>
+                    <span class="area-badge high">HIGH</span>
+                </div>
+                <div class="area-message">
+                    <i class="fas fa-chart-line" style="color: #f39c12;"></i>
+                    Powai showing high demand — prioritize donations here
+                </div>
+                <div class="progress-bar-container">
+                    <div class="progress-bar high" style="width: 60%;"></div>
+                    <span class="request-count">📊 14 requests</span>
+                </div>
+            </div>
+
+            <div class="area-card high">
+                <div class="area-header">
+                    <div class="area-name">Bandra</div>
+                    <span class="area-badge high">HIGH</span>
+                </div>
+                <div class="area-message">
+                    <i class="fas fa-chart-line" style="color: #f39c12;"></i>
+                    Bandra showing high demand — prioritize donations here
+                </div>
+                <div class="progress-bar-container">
+                    <div class="progress-bar high" style="width: 55%;"></div>
+                    <span class="request-count">📊 12 requests</span>
+                </div>
+            </div>
+
+            <div class="area-card medium">
+                <div class="area-header">
+                    <div class="area-name">Andheri</div>
+                    <span class="area-badge medium">MEDIUM</span>
+                </div>
+                <div class="area-message">
+                    <i class="fas fa-info-circle" style="color: #3498db;"></i>
+                    Andheri has moderate/low demand
+                </div>
+                <div class="progress-bar-container">
+                    <div class="progress-bar medium" style="width: 35%;"></div>
+                    <span class="request-count">📉 8 requests</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

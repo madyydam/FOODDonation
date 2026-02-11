@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart NGO Matching - Every Bite Matters</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            background: #f8f9fa;
+            padding-bottom: 3rem;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 3rem 5%;
+            color: white;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            opacity: 0.95;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: -2rem auto 0;
+            padding: 0 2rem;
+        }
+
+        .algorithm-box {
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+
+        .algorithm-box h2 {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .factors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .factor-card {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 15px;
+            border-left: 5px solid;
+        }
+
+        .factor-card.distance {
+            border-left-color: #3498db;
+        }
+
+        .factor-card.urgency {
+            border-left-color: #f39c12;
+        }
+
+        .factor-card.demand {
+            border-left-color: #9b59b6;
+        }
+
+        .factor-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 0.5rem;
+        }
+
+        .factor-icon {
+            font-size: 1.5rem;
+        }
+
+        .factor-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+
+        .factor-weight {
+            font-size: 0.9rem;
+            color: #7f8c8d;
+        }
+
+        .factor-desc {
+            color: #555;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .demo-section {
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .demo-section h3 {
+            margin-bottom: 1.5rem;
+        }
+
+        .ngo-list {
+            margin-top: 1.5rem;
+        }
+
+        .ngo-card {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            transition: transform 0.3s;
+        }
+
+        .ngo-card:hover {
+            transform: translateX(5px);
+        }
+
+        .ngo-rank {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 1.1rem;
+        }
+
+        .ngo-rank.top {
+            background: linear-gradient(135deg, #2ecc71, #27ae60);
+        }
+
+        .ngo-info {
+            flex: 1;
+        }
+
+        .ngo-name {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 0.3rem;
+        }
+
+        .ngo-details {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+        }
+
+        .ngo-score {
+            text-align: right;
+        }
+
+        .score-value {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #2ecc71, #27ae60);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .score-label {
+            font-size: 0.8rem;
+            color: #7f8c8d;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="hero">
+        <h1><i class="fas fa-robot"></i> Smart NGO Matching</h1>
+        <p>Our AI algorithm considers distance, food expiry urgency, and NGO demand to find the optimal match.</p>
+    </div>
+
+    <div class="container">
+        <div class="algorithm-box">
+            <h2><i class="fas fa-brain"></i> How the Algorithm Works</h2>
+            <p style="color: #555;">Our AI considers multiple factors to ensure fast, efficient food delivery:</p>
+
+            <div class="factors-grid">
+                <div class="factor-card distance">
+                    <div class="factor-header">
+                        <i class="fas fa-map-marker-alt factor-icon" style="color: #3498db;"></i>
+                        <span class="factor-title">Distance</span>
+                        <span class="factor-weight">(40%)</span>
+                    </div>
+                    <p class="factor-desc">Closer NGOs get higher scores. Within 3km = top priority.</p>
+                </div>
+
+                <div class="factor-card urgency">
+                    <div class="factor-header">
+                        <i class="fas fa-clock factor-icon" style="color: #f39c12;"></i>
+                        <span class="factor-title">Urgency</span>
+                        <span class="factor-weight">(30%)</span>
+                    </div>
+                    <p class="factor-desc">Food expiring in <2 hours gets urgent matching boost.</p>
+                </div>
+
+                <div class="factor-card demand">
+                    <div class="factor-header">
+                        <i class="fas fa-chart-line factor-icon" style="color: #9b59b6;"></i>
+                        <span class="factor-title">Demand</span>
+                        <span class="factor-weight">(30%)</span>
+                    </div>
+                    <p class="factor-desc">NGOs with more requests get prioritized for supply.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="demo-section">
+            <h3>Live Demo: Matching 10kg Rice & Dal</h3>
+            <div class="ngo-list">
+                <div class="ngo-card">
+                    <div class="ngo-rank top">#1</div>
+                    <div class="ngo-info">
+                        <div class="ngo-name">Mumbai Food Bank</div>
+                        <div class="ngo-details">South Mumbai • 0 km away • 18 requests today</div>
+                        <div style="margin-top: 0.5rem; color: #2ecc71; font-size: 0.85rem;">✓ Very close proximity
+                        </div>
+                    </div>
+                    <div class="ngo-score">
+                        <div class="score-value">95</div>
+                        <div class="score-label">score</div>
+                    </div>
+                </div>
+
+                <div class="ngo-card">
+                    <div class="ngo-rank">#2</div>
+                    <div class="ngo-info">
+                        <div class="ngo-name">Annapurna Trust</div>
+                        <div class="ngo-details">Bandra • 5.4 km away • 12 requests today</div>
+                        <div style="margin-top: 0.5rem; color: #9b59b6; font-size: 0.85rem;">⚡ High demand area</div>
+                    </div>
+                    <div class="ngo-score">
+                        <div class="score-value">84</div>
+                        <div class="score-label">score</div>
+                    </div>
+                </div>
+
+                <div class="ngo-card">
+                    <div class="ngo-rank">#3</div>
+                    <div class="ngo-info">
+                        <div class="ngo-name">Seva Kitchen</div>
+                        <div class="ngo-details">Andheri • 4.3 km away • 8 requests today</div>
+                        <div style="margin-top: 0.5rem; color: #9b59b6; font-size: 0.85rem;">⚡ High demand area</div>
+                    </div>
+                    <div class="ngo-score">
+                        <div class="score-value">80</div>
+                        <div class="score-label">score</div>
+                    </div>
+                </div>
+
+                <div class="ngo-card">
+                    <div class="ngo-rank">#4</div>
+                    <div class="ngo-info">
+                        <div class="ngo-name">Feed India</div>
+                        <div class="ngo-details">Powai • 7.4 km away • 14 requests today</div>
+                        <div style="margin-top: 0.5rem; color: #9b59b6; font-size: 0.85rem;">⚡ High demand area</div>
+                    </div>
+                    <div class="ngo-score">
+                        <div class="score-value">80</div>
+                        <div class="score-label">score</div>
+                    </div>
+                </div>
+
+                <div class="ngo-card">
+                    <div class="ngo-rank">#5</div>
+                    <div class="ngo-info">
+                        <div class="ngo-name">Anna Daan</div>
+                        <div class="ngo-details">Dadar • 6.9 km away • 5 requests today</div>
+                        <div style="margin-top: 0.5rem; color: #95a5a6; font-size: 0.85rem;">• Best available match
+                        </div>
+                    </div>
+                    <div class="ngo-score">
+                        <div class="score-value">66</div>
+                        <div class="score-label">score</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

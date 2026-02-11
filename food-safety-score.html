@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Safety Score - Every Bite Matters</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            background: #f8f9fa;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 3rem 5%;
+            color: white;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            opacity: 0.95;
+        }
+
+        .safety-box {
+            max-width: 800px;
+            margin: -2rem auto 3rem;
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 2rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 700;
+            color: #34495e;
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        select {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .slider-group {
+            margin: 2rem 0;
+        }
+
+        .slider-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #2c3e50;
+            margin: 0.5rem 0;
+        }
+
+        input[type="range"] {
+            -webkit-appearance: none;
+            width: 100%;
+            height: 8px;
+            border-radius: 5px;
+            outline: none;
+        }
+
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: white;
+            cursor: pointer;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .risk-assessment {
+            margin-top: 3rem;
+            padding: 2rem;
+            border: 3px solid #f39c12;
+            border-radius: 15px;
+            background: #fef5e7;
+        }
+
+        .risk-header {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+
+        .risk-meter {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .meter-circle {
+            position: relative;
+            width: 160px;
+            height: 160px;
+        }
+
+        .meter-bg {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            background: conic-gradient(#2ecc71 0deg, #f39c12 120deg, #e74c3c 240deg, #e74c3c 360deg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .meter-inner {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            background: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .score-value {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #f39c12;
+        }
+
+        .score-label {
+            font-size: 0.9rem;
+            color: #7f8c8d;
+        }
+
+        .risk-info {
+            flex: 1;
+        }
+
+        .risk-level {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #f39c12;
+            margin-bottom: 0.5rem;
+        }
+
+        .risk-message {
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .analysis-factors {
+            margin-top: 1.5rem;
+        }
+
+        .factor-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 0.8rem;
+            background: white;
+            border-radius: 10px;
+            margin-bottom: 0.5rem;
+        }
+
+        .factor-item i {
+            color: #f39c12;
+        }
+
+        @media (max-width: 768px) {
+            .risk-meter {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="hero">
+        <h1><i class="fas fa-shield-alt"></i> AI Food Safety Score</h1>
+        <p>Adjust parameters to see real-time safety risk assessment powered by our AI algorithm.</p>
+    </div>
+
+    <div class="safety-box">
+        <div class="form-group">
+            <label><i class="fas fa-utensils"></i> Food Category</label>
+            <select id="foodCategory">
+                <option value="cooked">Cooked Food</option>
+                <option value="raw">Raw Food</option>
+                <option value="packaged">Packaged Food</option>
+                <option value="fruits">Fruits & Vegetables</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label><i class="fas fa-thermometer-half"></i> Storage Temperature</label>
+            <select id="storage">
+                <option value="room">Room Temperature (20-30°C)</option>
+                <option value="refrigerated">Refrigerated (0-5°C)</option>
+                <option value="frozen">Frozen (-18°C)</option>
+            </select>
+        </div>
+
+        <div class="slider-group">
+            <label><i class="fas fa-clock"></i> Hours Since Preparation:</label>
+            <div class="slider-value"><span id="hoursValue">3</span>h</div>
+            <input type="range" id="hoursSlider" min="0" max="24" value="3"
+                style="background: linear-gradient(to right, #2ecc71 0%, #f39c12 50%, #e74c3c 100%);">
+        </div>
+
+        <div class="risk-assessment" id="riskBox">
+            <div class="risk-header">Risk Assessment</div>
+
+            <div class="risk-meter">
+                <div class="meter-circle">
+                    <div class="meter-bg">
+                        <div class="meter-inner">
+                            <div class="score-value" id="scoreValue">65</div>
+                            <div class="score-label">/100</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="risk-info">
+                    <div class="risk-level" id="riskLevel">🟠 MEDIUM RISK</div>
+                    <div class="risk-message" id="riskMessage">
+                        Caution — donate quickly or consume soon
+                    </div>
+                </div>
+            </div>
+
+            <div class="analysis-factors">
+                <div class="factor-item">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <span>Recently prepared (< 4 hours)</span>
+                </div>
+                <div class="factor-item">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <span>Room temperature storage (danger zone)</span>
+                </div>
+                <div class="factor-item">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <span>Cooked food — moderate risk</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const foodCategory = document.getElementById('foodCategory');
+        const storage = document.getElementById('storage');
+        const hoursSlider = document.getElementById('hoursSlider');
+        const hoursValue = document.getElementById('hoursValue');
+        const scoreValue = document.getElementById('scoreValue');
+        const riskLevel = document.getElementById('riskLevel');
+        const riskMessage = document.getElementById('riskMessage');
+        const riskBox = document.getElementById('riskBox');
+
+        function calculateRisk() {
+            let score = 100;
+            const hours = parseInt(hoursSlider.value);
+            const cat = foodCategory.value;
+            const temp = storage.value;
+
+            // Hours penalty
+            if (hours > 4) score -= 30;
+            else if (hours > 2) score -= 15;
+
+            // Storage penalty
+            if (temp === 'room') score -= 25;
+            else if (temp === 'refrigerated') score -= 10;
+
+            // Category penalty
+            if (cat === 'cooked') score -= 15;
+            else if (cat === 'raw') score -= 20;
+
+            score = Math.max(0, Math.min(100, score));
+
+            // Update UI
+            hoursValue.textContent = hours;
+            scoreValue.textContent = score;
+
+            if (score >= 70) {
+                scoreValue.style.color = '#2ecc71';
+                riskLevel.textContent = '🟢 LOW RISK';
+                riskLevel.style.color = '#2ecc71';
+                riskMessage.textContent = 'Food is safe for donation and consumption';
+                riskBox.style.borderColor = '#2ecc71';
+                riskBox.style.background = '#e8f8f5';
+            } else if (score >= 40) {
+                scoreValue.style.color = '#f39c12';
+                riskLevel.textContent = '🟠 MEDIUM RISK';
+                riskLevel.style.color = '#f39c12';
+                riskMessage.textContent = 'Caution — donate quickly or consume soon';
+                riskBox.style.borderColor = '#f39c12';
+                riskBox.style.background = '#fef5e7';
+            } else {
+                scoreValue.style.color = '#e74c3c';
+                riskLevel.textContent = '🔴 HIGH RISK';
+                riskLevel.style.color = '#e74c3c';
+                riskMessage.textContent = 'Not recommended for donation — consume immediately or discard';
+                riskBox.style.borderColor = '#e74c3c';
+                riskBox.style.background = '#fadbd8';
+            }
+        }
+
+        foodCategory.addEventListener('change', calculateRisk);
+        storage.addEventListener('change', calculateRisk);
+        hoursSlider.addEventListener('input', calculateRisk);
+
+        calculateRisk();
+    </script>
+</body>
+
+</html>
