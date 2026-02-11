@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donation History - Donor Dashboard</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Additional styles for history page */
+        .history-container {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+            border: 1px solid #f0f0f0;
+        }
+
+        .history-header {
+            margin-bottom: 25px;
+        }
+
+        .history-header h1 {
+            font-size: 1.8rem;
+            color: #2c3e50;
+            margin-bottom: 8px;
+        }
+
+        .history-header p {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+        }
+
+        .history-controls {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 25px;
+            align-items: center;
+        }
+
+        .search-box {
+            flex: 1;
+            position: relative;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 10px 15px 10px 40px;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .search-box input:focus {
+            border-color: #2ecc71;
+        }
+
+        .search-box i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #95a5a6;
+        }
+
+        .filter-select {
+            padding: 10px 30px 10px 15px;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            outline: none;
+            background: white;
+            cursor: pointer;
+            min-width: 150px;
+        }
+
+        .history-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .history-table thead {
+            background: #f8f9fa;
+            border-bottom: 2px solid #e0e0e0;
+        }
+
+        .history-table th {
+            padding: 12px 15px;
+            text-align: left;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #7f8c8d;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .history-table td {
+            padding: 15px;
+            border-bottom: 1px solid #f0f0f0;
+            font-size: 0.9rem;
+            color: #555;
+        }
+
+        .history-table tbody tr {
+            transition: background 0.2s;
+        }
+
+        .history-table tbody tr:hover {
+            background: #f8f9fa;
+        }
+
+        .ngo-cell {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .ngo-avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #f0f0f0;
+        }
+
+        .status-badge.pending-review {
+            background-color: #fff3cd;
+            color: #856404;
+        }
+
+        .status-badge.delivered {
+            background-color: #d4edda;
+            color: #155724;
+        }
+
+        .status-badge.completed {
+            background-color: #d4edda;
+            color: #155724;
+        }
+
+        .status-badge.in-transit {
+            background-color: #cce5ff;
+            color: #004085;
+        }
+
+        .rating-stars {
+            display: flex;
+            gap: 3px;
+        }
+
+        .rating-stars i {
+            color: #ffa500;
+            font-size: 0.85rem;
+        }
+
+        .rating-stars i.empty {
+            color: #ddd;
+        }
+
+        .date-cell {
+            color: #7f8c8d;
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <i class="fas fa-th-large"></i> Donor Dashboard
+            </div>
+            <ul class="sidebar-menu">
+                <li><a href="donor.html"><i class="fas fa-utensils"></i> Active Donations</a></li>
+                <li><a href="donor-history.html" class="active"><i class="fas fa-history"></i> Donation History</a></li>
+                <li><a href="#"><i class="fas fa-cog"></i> Settings</a></li>
+            </ul>
+            <div class="sidebar-footer">
+                <p>&copy; 2026 From Surplus to Smiles.</p>
+                <p style="font-size: 0.7rem; color: #95a5a6;">All rights reserved.</p>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="dashboard-header">
+                <div class="brand">
+                    <i class="fas fa-box-open" style="color: #2ecc71;"></i> <span
+                        style="color: #2ecc71; font-weight: 600; margin-left: 5px;">From Surplus to Smiles</span>
+                </div>
+                <div class="user-profile">
+                    <div style="position: relative; margin-right: 15px; cursor: pointer;">
+                        <i class="far fa-bell" style="font-size: 1.2rem; color: #555;"></i>
+                        <span
+                            style="position: absolute; top: -5px; right: -2px; background: #e74c3c; width: 8px; height: 8px; border-radius: 50%;"></span>
+                    </div>
+                    <div style="position: relative;">
+                        <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80"
+                            alt="User" class="user-avatar" style="border: 2px solid #2ecc71; cursor: pointer;"
+                            onclick="toggleDashboardMenu()">
+                        <div id="dashboardMenu" class="dashboard-switcher" style="display: none;">
+                            <div class="switcher-header">Switch Dashboard</div>
+                            <a href="donor.html" class="switcher-item active">
+                                <i class="fas fa-box-open"></i> Donor Dashboard
+                            </a>
+                            <a href="ngo.html" class="switcher-item">
+                                <i class="fas fa-hand-holding-heart"></i> NGO Dashboard
+                            </a>
+                            <a href="volunteer.html" class="switcher-item">
+                                <i class="fas fa-car"></i> Volunteer Dashboard
+                            </a>
+                            <a href="admin.html" class="switcher-item">
+                                <i class="fas fa-cog"></i> Admin Dashboard
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <div class="content-area">
+                <div class="history-container">
+                    <div class="history-header">
+                        <h1>Donation History</h1>
+                        <p>A comprehensive record of all donations you have made.</p>
+                    </div>
+
+                    <div class="history-controls">
+                        <div class="search-box">
+                            <i class="fas fa-search"></i>
+                            <input type="text" placeholder="Search by NGO or item...">
+                        </div>
+                        <select class="filter-select">
+                            <option>Date</option>
+                            <option>Last 7 days</option>
+                            <option>Last 30 days</option>
+                            <option>Last 3 months</option>
+                            <option>Last year</option>
+                        </select>
+                    </div>
+
+                    <table class="history-table">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>NGO</th>
+                                <th>Quantity</th>
+                                <th>Status</th>
+                                <th>Rating</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="date-cell">2023-10-26</td>
+                                <td>
+                                    <div class="ngo-cell">
+                                        <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80"
+                                            alt="Hope Foundation" class="ngo-avatar">
+                                        <span>Hope Foundation</span>
+                                    </div>
+                                </td>
+                                <td>200 kg Produce</td>
+                                <td><span class="status-badge completed">Completed</span></td>
+                                <td>
+                                    <div class="rating-stars">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="date-cell">2023-10-25</td>
+                                <td>
+                                    <div class="ngo-cell">
+                                        <img src="https://images.unsplash.com/photo-1559027615-cd4628902d4a?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80"
+                                            alt="Community Kitchen" class="ngo-avatar">
+                                        <span>Community Kitchen</span>
+                                    </div>
+                                </td>
+                                <td>150 kg Dairy</td>
+                                <td><span class="status-badge completed">Completed</span></td>
+                                <td>
+                                    <div class="rating-stars">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star empty"></i>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="date-cell">2023-10-24</td>
+                                <td>
+                                    <div class="ngo-cell">
+                                        <img src="https://images.unsplash.com/photo-1593113646773-028c64a8f1b8?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80"
+                                            alt="Feed The Hungry" class="ngo-avatar">
+                                        <span>Feed The Hungry</span>
+                                    </div>
+                                </td>
+                                <td>50 kg Bread</td>
+                                <td><span class="status-badge completed">Completed</span></td>
+                                <td>
+                                    <div class="rating-stars">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="date-cell">2023-10-23</td>
+                                <td>
+                                    <div class="ngo-cell">
+                                        <img src="https://images.unsplash.com/photo-1509099863731-ef4bff19e808?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80"
+                                            alt="Shelter Care" class="ngo-avatar">
+                                        <span>Shelter Care</span>
+                                    </div>
+                                </td>
+                                <td>100 kg Vegetables</td>
+                                <td><span class="status-badge in-transit">In Transit</span></td>
+                                <td>
+                                    <div class="rating-stars">
+                                        <i class="fas fa-star empty"></i>
+                                        <i class="fas fa-star empty"></i>
+                                        <i class="fas fa-star empty"></i>
+                                        <i class="fas fa-star empty"></i>
+                                        <i class="fas fa-star empty"></i>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="date-cell">2023-10-22</td>
+                                <td>
+                                    <div class="ngo-cell">
+                                        <img src="https://images.unsplash.com/photo-1497864149936-d3163f0c0f4b?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80"
+                                            alt="Children's Aid" class="ngo-avatar">
+                                        <span>Children's Aid</span>
+                                    </div>
+                                </td>
+                                <td>20 kg Pastries</td>
+                                <td><span class="status-badge completed">Completed</span></td>
+                                <td>
+                                    <div class="rating-stars">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="date-cell">2023-10-21</td>
+                                <td>
+                                    <div class="ngo-cell">
+                                        <img src="https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80"
+                                            alt="Food Bank Central" class="ngo-avatar">
+                                        <span>Food Bank Central</span>
+                                    </div>
+                                </td>
+                                <td>300 kg Grains</td>
+                                <td><span class="status-badge delivered">Delivered</span></td>
+                                <td>
+                                    <div class="rating-stars">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star empty"></i>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="date-cell">2023-10-20</td>
+                                <td>
+                                    <div class="ngo-cell">
+                                        <img src="https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80"
+                                            alt="Meals on Wheels" class="ngo-avatar">
+                                        <span>Meals on Wheels</span>
+                                    </div>
+                                </td>
+                                <td>75 kg Mixed Vegetables</td>
+                                <td><span class="status-badge completed">Completed</span></td>
+                                <td>
+                                    <div class="rating-stars">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="date-cell">2023-10-19</td>
+                                <td>
+                                    <div class="ngo-cell">
+                                        <img src="https://images.unsplash.com/photo-1601758063541-d2f50b4aafb2?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80"
+                                            alt="Senior Support" class="ngo-avatar">
+                                        <span>Senior Support</span>
+                                    </div>
+                                </td>
+                                <td>40 kg Cooked Meals</td>
+                                <td><span class="status-badge completed">Completed</span></td>
+                                <td>
+                                    <div class="rating-stars">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star empty"></i>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        function toggleDashboardMenu() {
+            const menu = document.getElementById('dashboardMenu');
+            menu.style.display = menu.style.display === 'none' ? 'block' : 'none';
+        }
+
+        // Close menu when clicking outside
+        document.addEventListener('click', function (event) {
+            const menu = document.getElementById('dashboardMenu');
+            const avatar = document.querySelector('.user-avatar');
+            if (menu && !menu.contains(event.target) && event.target !== avatar) {
+                menu.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+
+</html>
