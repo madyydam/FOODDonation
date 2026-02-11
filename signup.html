@@ -41,16 +41,6 @@
                         <input type="password" placeholder="Password" required>
                     </div>
 
-                    <div class="input-group">
-                        <i class="fas fa-users input-icon"></i>
-                        <select id="roleSelect"
-                            style="width: 100%; padding: 12px 15px 12px 40px; border: 1px solid #ddd; border-radius: 8px; outline: none;">
-                            <option value="" disabled selected>Select Role</option>
-                            <option value="donor">Donor</option>
-                            <option value="ngo">NGO</option>
-                            <option value="volunteer">Volunteer</option>
-                        </select>
-                    </div>
 
                     <button type="submit" class="btn-primary">Sign Up</button>
 
@@ -74,15 +64,8 @@
     <script>
         document.getElementById('signupForm').addEventListener('submit', (e) => {
             e.preventDefault();
-            const role = document.getElementById('roleSelect').value;
-            if (!role) {
-                alert('Please select a role');
-                return;
-            }
-            // Simulate redirect based on role
-            if (role === 'donor') window.location.href = 'donor.html';
-            else if (role === 'ngo') window.location.href = 'ngo.html';
-            else if (role === 'volunteer') window.location.href = 'volunteer.html';
+            // In a real app, we would create user here
+            window.location.href = 'role_selection.html';
         });
     </script>
 </body>

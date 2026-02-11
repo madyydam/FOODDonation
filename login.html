@@ -38,19 +38,6 @@
 
                     <a href="#" class="forgot-password">Forgot Password?</a>
 
-                    <!-- Role selection for demo (hidden in real app or handled differently) -->
-                    <div class="input-group">
-                        <label
-                            style="display:block; text-align:left; margin-bottom:5px; font-size:0.9rem; color:#7f8c8d;">Select
-                            Role (Demo):</label>
-                        <select id="roleSelect"
-                            style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 8px;">
-                            <option value="donor">Donor</option>
-                            <option value="ngo">NGO</option>
-                            <option value="volunteer">Volunteer</option>
-                            <option value="admin">Admin</option>
-                        </select>
-                    </div>
 
                     <button type="submit" class="btn-primary">Login</button>
 
@@ -78,12 +65,8 @@
     <script>
         document.getElementById('loginForm').addEventListener('submit', (e) => {
             e.preventDefault();
-            const role = document.getElementById('roleSelect').value;
-            // Simulate redirect based on role
-            if (role === 'donor') window.location.href = 'donor.html';
-            else if (role === 'ngo') window.location.href = 'ngo.html';
-            else if (role === 'volunteer') window.location.href = 'volunteer.html';
-            else if (role === 'admin') window.location.href = 'admin.html';
+            // In a real app, we would validate credentials here
+            window.location.href = 'role_selection.html';
         });
     </script>
 </body>

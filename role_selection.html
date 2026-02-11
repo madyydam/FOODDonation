@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Role - Food Donation Platform</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="role-selection-container">
+        <div class="progress-container">
+            <span class="step-text">Step 1 of 3</span>
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 33%;"></div>
+            </div>
+        </div>
+
+        <h1>What's Your Role?</h1>
+        <p class="role-subtitle">Choose the option that best describes how you'll engage with Feed More Waste Less.</p>
+
+        <div class="role-grid">
+            <!-- Donor Card -->
+            <div class="role-card" onclick="selectRole('donor')">
+                <div class="role-icon">
+                    <i class="fas fa-utensils"></i>
+                </div>
+                <h3>Donor</h3>
+                <p>Individuals or businesses looking to donate surplus food to those in need.</p>
+            </div>
+
+            <!-- NGO Card -->
+            <div class="role-card" onclick="selectRole('ngo')">
+                <div class="role-icon">
+                    <i class="fas fa-warehouse"></i>
+                </div>
+                <h3>NGO</h3>
+                <p>Non-profit organizations that distribute food to communities.</p>
+            </div>
+
+            <!-- Volunteer Card -->
+            <div class="role-card" onclick="selectRole('volunteer')">
+                <div class="role-icon">
+                    <i class="fas fa-bicycle"></i>
+                </div>
+                <h3>Volunteer</h3>
+                <p>Individuals ready to help with food collection, sorting, or delivery.</p>
+            </div>
+
+            <!-- Admin Card -->
+            <div class="role-card" onclick="selectRole('admin')">
+                <div class="role-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h3>Admin</h3>
+                <p>Platform administrators managing operations and user accounts.</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script>
+        function selectRole(role) {
+            // In a real app, we would save this selection
+            console.log('Selected role:', role);
+            if (role === 'donor') window.location.href = 'donor.html';
+            else if (role === 'ngo') window.location.href = 'ngo.html';
+            else if (role === 'volunteer') window.location.href = 'volunteer.html';
+            else if (role === 'admin') window.location.href = 'admin.html';
+        }
+    </script>
+</body>
+
+</html>
