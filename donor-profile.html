@@ -8,9 +8,16 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+        media="print" onload="this.media='all'">
+    <noscript>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    </noscript>
     <style>
         .profile-container {
             max-width: 900px;
@@ -226,7 +233,7 @@
             <div class="sidebar-footer">
                 <p>&copy; 2026 From Surplus to Smiles.</p>
                 <div style="margin-top: 10px;">
-                    <button class="btn-secondary-outline" onclick="Auth.logout()"
+                    <button class="btn-secondary-outline" onclick="window.location.href='role_selection.html'"
                         style="width: 100%; justify-content: center; border: 1px solid rgba(255,255,255,0.2); color: #ecf0f1; background: #2c3e50;">Switch
                         Role</button>
                 </div>

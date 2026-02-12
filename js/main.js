@@ -65,10 +65,12 @@
 
     async function initializePage() {
         // Check authentication for dashboard pages
-        const isDashboard = window.location.pathname.includes('donor.html') ||
-            window.location.pathname.includes('ngo.html') ||
-            window.location.pathname.includes('volunteer.html') ||
-            window.location.pathname.includes('admin.html');
+        const isDashboard = window.location.pathname.includes('donor') ||
+            window.location.pathname.includes('ngo') ||
+            window.location.pathname.includes('volunteer') ||
+            window.location.pathname.includes('admin') ||
+            window.location.pathname.includes('history') ||
+            window.location.pathname.includes('profile');
 
         if (isDashboard && typeof Auth !== 'undefined') {
             // Auth.requireAuth(); // Disabled login requirement as per user request
