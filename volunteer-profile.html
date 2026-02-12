@@ -8,9 +8,16 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://images.unsplash.com">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://images.unsplash.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+        media="print" onload="this.media='all'">
+    <noscript>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    </noscript>
     <style>
         .profile-container {
             max-width: 900px;
@@ -226,6 +233,11 @@
             </ul>
             <div class="sidebar-footer">
                 <p>&copy; 2026 From Surplus to Smiles.</p>
+                <div style="margin-top: 10px;">
+                    <button class="btn-secondary-outline" onclick="window.location.href='role_selection.html'"
+                        style="width: 100%; justify-content: center; border: 1px solid rgba(255,255,255,0.2); color: #ecf0f1;">Switch
+                        Role</button>
+                </div>
             </div>
         </aside>
 
@@ -237,6 +249,13 @@
                 </div>
                 <div class="user-profile">
                     <i class="far fa-bell notification-icon"></i>
+                    <!-- Role Switcher Button -->
+                    <div style="position: relative; margin-right: 15px;">
+                        <button onclick="window.location.href='role_selection.html'"
+                            style="background: #3498db; color: white; border: none; padding: 8px 15px; border-radius: 8px; cursor: pointer; font-size: 0.9rem; font-weight: 500; display: flex; align-items: center; gap: 5px;">
+                            <i class="fas fa-random"></i> Switch Role
+                        </button>
+                    </div>
                     <a href="volunteer-profile.html">
                         <img data-src="https://api.dicebear.com/7.x/avataaars/svg?seed=Arjun&backgroundColor=add8e6"
                             alt="Arjun Singh" class="user-avatar lazy" style="cursor: pointer;">

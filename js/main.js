@@ -4,8 +4,6 @@
 (function () {
     'use strict';
 
-    // Dashboard loaded - removed console.log for production
-
     // Common utility functions
     const Utils = {
         // Debounce function for search/filter inputs
@@ -52,26 +50,11 @@
         // Safe DOM query all
         $$(selector) {
             return document.querySelectorAll(selector);
-        },
-
-        // Toggle Role Switcher
-        toggleRoleSwitcher() {
-            const menu = document.getElementById('roleSwitcher');
-            if (menu) {
-                const isVisible = menu.style.display === 'block';
-                menu.style.display = isVisible ? 'none' : 'block';
-
-                // Add class for animation/smoothness if needed
-                if (!isVisible) {
-                    menu.classList.add('fade-in');
-                }
-            }
         }
     };
 
     // Make utilities globally available
     window.Utils = Utils;
-    window.toggleRoleSwitcher = Utils.toggleRoleSwitcher;
 
     // Initialize page when DOM is ready
     if (document.readyState === 'loading') {
@@ -88,8 +71,7 @@
             window.location.pathname.includes('admin.html');
 
         if (isDashboard && typeof Auth !== 'undefined') {
-            Auth.requireAuth(); // Uncommented for stability, but careful with logic changes
-            // For now, keep it as is if it was commented out to avoid breaking local testing
+            // Auth.requireAuth(); // Disabled login requirement as per user request
         }
 
         // Add passive event listeners for better scroll performance
@@ -103,15 +85,9 @@
             setupLazyLoading();
         }
 
-        // Global click handler for closing dropdowns
-        document.addEventListener('click', function (event) {
-            // Role Switcher closing
-            const menu = document.getElementById('roleSwitcher');
-            const button = event.target.closest('button[onclick*="toggleRoleSwitcher"]');
-            if (!button && menu && menu.style.display === 'block' && !menu.contains(event.target)) {
-                menu.style.display = 'none';
-            }
-        });
+        // Initialize prefetching and reveal animations
+        setupPrefetching();
+        setupRevealAnimations();
     }
 
     function handleScroll(e) {
@@ -123,17 +99,59 @@
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     const img = entry.target;
+
+                    // Handle regular images
                     if (img.dataset.src) {
                         img.src = img.dataset.src;
-                        img.classList.remove('lazy');
-                        observer.unobserve(img);
+                        img.removeAttribute('data-src');
                     }
+
+                    // Handle background images
+                    if (img.dataset.bg) {
+                        img.style.backgroundImage = `url(${img.dataset.bg})`;
+                        img.removeAttribute('data-bg');
+                    }
+
+                    img.classList.remove('lazy');
+                    img.classList.add('loaded');
+                    observer.unobserve(img);
                 }
             });
-        });
+        }, { rootMargin: '50px 0px', threshold: 0.01 });
 
-        document.querySelectorAll('img.lazy, img[data-src]').forEach(img => {
-            imageObserver.observe(img);
+        document.querySelectorAll('img.lazy, [data-src], [data-bg]').forEach(el => {
+            imageObserver.observe(el);
+        });
+    }
+
+    // Prefetch links on hover for faster navigation
+    function setupPrefetching() {
+        const prefetchHandler = (e) => {
+            const link = e.target.closest('a');
+            if (link && link.href && !link.dataset.prefetched && link.origin === window.location.origin) {
+                const prefetchLink = document.createElement('link');
+                prefetchLink.rel = 'prefetch';
+                prefetchLink.href = link.href;
+                document.head.appendChild(prefetchLink);
+                link.dataset.prefetched = 'true';
+            }
+        };
+
+        document.addEventListener('mouseover', Utils.debounce(prefetchHandler, 100));
+    }
+
+    // Initialize smoothness (reveal animations)
+    function setupRevealAnimations() {
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.reveal').forEach(el => {
+            revealObserver.observe(el);
         });
     }
 

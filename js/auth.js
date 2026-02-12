@@ -121,7 +121,7 @@ const Auth = {
             localStorage.removeItem('selectedRole');
 
             // Redirect to login
-            window.location.href = 'login.html';
+            window.location.href = 'role_selection.html';
         } catch (error) {
             console.error('Logout error:', error);
             alert('Logout failed. Please try again.');
@@ -154,11 +154,7 @@ const Auth = {
 
     // Require authentication (redirect to login if not authenticated)
     async requireAuth() {
-        const isAuth = await this.isAuthenticated();
-        if (!isAuth) {
-            window.location.href = 'login.html';
-            return false;
-        }
+        // Authentication disabled as per user request
         return true;
     },
 

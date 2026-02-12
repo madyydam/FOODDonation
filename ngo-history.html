@@ -8,9 +8,16 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://images.unsplash.com">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://images.unsplash.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+        media="print" onload="this.media='all'">
+    <noscript>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    </noscript>
     <style>
         /* Additional styles for history page */
         .history-container {
@@ -207,7 +214,8 @@
                 <p>&copy; 2026 From Surplus to Smiles.</p>
                 <div style="margin-top: 10px;">
                     <button class="btn-secondary-outline" onclick="Auth.logout()"
-                        style="width: 100%; justify-content: center; border: 1px solid rgba(255,255,255,0.2); color: #ecf0f1;">Logout</button>
+                        style="width: 100%; justify-content: center; border: 1px solid rgba(255,255,255,0.2); color: #ecf0f1;">Switch
+                        Role</button>
                 </div>
             </div>
         </aside>
@@ -220,26 +228,17 @@
                 </div>
                 <div class="user-profile">
                     <i class="far fa-bell notification-icon"></i>
-                    <div style="position: relative;">
-                        <img data-src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80"
-                            alt="NGO User" class="user-avatar lazy" style="cursor: pointer;"
-                            onclick="Utils.toggleRoleSwitcher()">
-                        <div id="roleSwitcher" class="dashboard-switcher" style="display: none;">
-                            <div class="switcher-header">Switch Dashboard</div>
-                            <a href="donor.html" class="switcher-item">
-                                <i class="fas fa-box-open"></i> Donor Dashboard
-                            </a>
-                            <a href="ngo.html" class="switcher-item active">
-                                <i class="fas fa-hand-holding-heart"></i> NGO Dashboard
-                            </a>
-                            <a href="volunteer.html" class="switcher-item">
-                                <i class="fas fa-car"></i> Volunteer Dashboard
-                            </a>
-                            <a href="admin.html" class="switcher-item">
-                                <i class="fas fa-cog"></i> Admin Dashboard
-                            </a>
-                        </div>
+                    <!-- Role Switcher Button -->
+                    <div style="position: relative; margin-right: 15px;">
+                        <button onclick="window.location.href='role_selection.html'"
+                            style="background: #e74c3c; color: white; border: none; padding: 8px 15px; border-radius: 8px; cursor: pointer; font-size: 0.9rem; font-weight: 500; display: flex; align-items: center; gap: 5px;">
+                            <i class="fas fa-random"></i> Switch Role
+                        </button>
                     </div>
+                    <a href="ngo-profile.html">
+                        <img data-src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80"
+                            alt="NGO User" class="user-avatar lazy" style="cursor: pointer;">
+                    </a>
                 </div>
             </header>
 

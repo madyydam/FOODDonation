@@ -71,9 +71,18 @@
     <script src="js/main.js"></script>
     <script>
         function selectRole(role) {
-            // Save role to localStorage or pass via URL
+            // Save role to localStorage
             localStorage.setItem('selectedRole', role);
-            window.location.href = 'signup.html';
+
+            // Map roles to their dashboards
+            const dashboardMap = {
+                'donor': 'donor.html',
+                'ngo': 'ngo.html',
+                'volunteer': 'volunteer.html',
+                'admin': 'admin.html'
+            };
+
+            window.location.href = dashboardMap[role] || 'donor.html';
         }
     </script>
 </body>
